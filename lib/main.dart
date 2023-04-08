@@ -1,5 +1,6 @@
 import 'package:book_bank/components/constant/constant.dart';
 import 'package:book_bank/generated/assets.dart';
+import 'package:book_bank/screens/homescreen/homescreen2.dart';
 import 'package:book_bank/view/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         primaryTextTheme:
         GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
       ),
-      home: const SplashScreen(),
+      home:  const SplashScreen(),
     );
   }
   MaterialColor createMaterialColor(Color color) {
