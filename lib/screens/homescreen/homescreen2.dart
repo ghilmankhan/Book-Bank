@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 
-class homescreen2 extends StatelessWidget {
+class homescreen2 extends StatefulWidget {
 
+  @override
+  State<homescreen2> createState() => _homescreen2State();
+}
+
+class _homescreen2State extends State<homescreen2> {
   Widget singleproducts(){
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10),
@@ -92,7 +97,6 @@ class homescreen2 extends StatelessWidget {
       ),
     );
   }
-
 
   Widget singleproductsfornearme(){
     return Container(
@@ -184,7 +188,6 @@ class homescreen2 extends StatelessWidget {
 
   }
 
-
   Widget newdonatinsngos() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10),
@@ -275,15 +278,11 @@ class homescreen2 extends StatelessWidget {
     );
   }
 
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         title: Text(
           'Good Morning',
         ),
@@ -301,80 +300,163 @@ class homescreen2 extends StatelessWidget {
             },
           ),
         ],
-        backgroundColor: Color(0xff9933ff),
+        backgroundColor: Colors.purple,
       ),
       drawer: Drawer(
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text("Muhammad Ghilman Khan"),
-              accountEmail: Text("khanghilman96@gmail.com"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.purpleAccent,
-                child: Text(
-                  "MG",
-                  style: TextStyle(fontSize: 40.0),
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.purpleAccent, Colors.deepPurpleAccent],
+                ),
+              ),
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 40.0,
+                      child: Text(
+                        'MG',
+                        style: TextStyle(
+                          fontSize: 40.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.purpleAccent,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Text(
+                      'Muhammad Ghilman Khan',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    Text(
+                      'khanghilman96@gmail.com',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.0,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home,color: Colors.purple,), title: Text("Home"),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              leading: Icon(Icons.home, color: Colors.purple),
+              title: Text(
+                'Home',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
+              onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.settings,color: Colors.purple,), title: Text("Settings"),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              leading: Icon(Icons.settings, color: Colors.purple),
+              title: Text(
+                'Settings',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
+              onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.dashboard,color: Colors.purple,), title: Text("Dashboard"),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              leading: Icon(Icons.dashboard, color: Colors.purple),
+              title: Text(
+                'Dashboard',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
+              onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.history,color: Colors.purple,), title: Text("Donation history"),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              leading: Icon(Icons.history, color: Colors.purple),
+              title: Text(
+                'Donation history',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
+              onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.join_full,color: Colors.purple,), title: Text("Projects joined"),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              leading: Icon(Icons.join_full, color: Colors.purple),
+              title: Text(
+                'Projects joined',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
+              onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.payment,color: Colors.purple,), title: Text("Payment Centre"),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              leading: Icon(Icons.payment, color: Colors.purple),
+              title: Text(
+                'Payment Centre',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
+              onTap: () {},
             ),
-
             ListTile(
-              leading: Icon(Icons.my_library_books,color: Colors.purple,), title: Text("My Books "),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              leading: Icon(Icons.my_library_books, color: Colors.purple),
+              title: Text(
+                'My Books',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
+              onTap: () {},
             ),
-
             ListTile(
-              leading: Icon(Icons.subscriptions,color: Colors.purple,), title: Text("My Subscription "),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              leading: Icon(Icons.subscriptions, color: Colors.purple),
+              title: Text(
+                'My Subscription',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
+              onTap: () {},
             ),
-
             ListTile(
-              leading: Icon(Icons.contacts,color: Colors.purple,), title: Text("Contact Us"),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              leading: Icon(Icons.contacts, color: Colors.purple),
+              title: Text(
+                'Contact Us',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
+              onTap: () {},
             ),
           ],
         ),
@@ -385,38 +467,67 @@ class homescreen2 extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search books',
+              SizedBox(height: 16.0),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.purple,
+                        blurRadius: 5.0,
+                        offset: Offset(0, 4),
                       ),
-                    ),
+                    ],
                   ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.filter_list,
-                      color: Colors.deepPurpleAccent,
-                    ),
-                    onPressed: () {
-                      // Handle filter button press
-                    },
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: ' Enter Keyword, Title, Author and ISBN',
+                          ),
+
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.filter_list,
+                          color: Colors.deepPurpleAccent,
+                        ),
+                        onPressed: () {
+                          // Handle filter button press
+                        },
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Column(
                   children: [
+                    SizedBox(height: 16.0),
                     Container(
                       height: 150,
                       decoration: BoxDecoration(
-                          image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  'https://cdn.booktrust.org.uk/globalassets/images/news-and-features/blogs-2022/12.-december/best-books-of-2022-16x9.jpg?w=1920&h=1080&quality=70&anchor=middlecenter')),
-                          borderRadius: BorderRadius.circular(10)),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.purple,
+                            blurRadius: 5.0,
+                            offset: Offset(0, 4),
+
+                          ),
+                        ],
+                        image: const DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                'https://cdn.booktrust.org.uk/globalassets/images/news-and-features/blogs-2022/12.-december/best-books-of-2022-16x9.jpg?w=1920&h=1080&quality=70&anchor=middlecenter')),
+                      ),
                       child: Row(
                         children: [
                           Expanded(
@@ -430,7 +541,7 @@ class homescreen2 extends StatelessWidget {
                                         right: 130, bottom: 10),
                                     child: Container(
                                       height: 55,
-                                      width: 100,
+                                      width: 120,
                                       decoration: BoxDecoration(
                                           color: Colors.red,
                                           borderRadius: BorderRadius.only(
@@ -441,7 +552,7 @@ class homescreen2 extends StatelessWidget {
                                         child: Text(
                                           'New',
                                           style: TextStyle(
-                                              fontSize: 16,
+                                              fontSize: 13,
                                               color: Colors.white,
                                               shadows: [
                                                 BoxShadow(
@@ -456,15 +567,15 @@ class homescreen2 extends StatelessWidget {
                                   ElevatedButton(
                                     child: Text('Explore now'),
                                     style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.red,
-                                        foregroundColor: Colors.yellow),
+                                        backgroundColor: Colors.white,
+                                        foregroundColor: Colors.purple),
                                     onPressed: () {},
                                   ),
                                   Text(
                                     'Find Your best books Today!',
                                     style: TextStyle(
                                         fontSize: 10,
-                                        color: Colors.yellowAccent[100],
+                                        color: Colors.white,
                                         fontWeight: FontWeight.bold),
                                   )
                                 ],
@@ -478,32 +589,51 @@ class homescreen2 extends StatelessWidget {
                   ],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Icon(
-                    Icons.science,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  Icon(
-                    Icons.gavel,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  Icon(
-                    Icons.calculate,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  Icon(
-                    Icons.computer,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  Icon(
-                    Icons.language,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  // Add more category icons here
-                ],
+              SizedBox(height: 16.0),
+              Container(
+                height: 50,
+                width: 250,
+                decoration: BoxDecoration(
+                  color: Colors.purpleAccent,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 1.0,
+                      offset: Offset(0, 4),
+
+                    ),
+                  ],
+                ),
+
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Icon(
+                      Icons.science,
+                      color: Colors.white,
+                    ),
+                    Icon(
+                      Icons.gavel,
+                      color: Colors.white,
+                    ),
+                    Icon(
+                      Icons.calculate,
+                      color: Colors.white,
+                    ),
+                    Icon(
+                      Icons.computer,
+                      color: Colors.white,
+                    ),
+                    Icon(
+                      Icons.language,
+                      color: Colors.white,
+                    ),
+                    // Add more category icons here
+                  ],
+                ),
               ),
+              SizedBox(height: 16.0),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                 child: Row(
