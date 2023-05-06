@@ -282,7 +282,9 @@ class _homescreen2State extends State<homescreen2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Home'),
         actions: [
+
           IconButton(
             icon: Icon(Icons.notifications),
             onPressed: () {
@@ -463,6 +465,70 @@ class _homescreen2State extends State<homescreen2> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(height: 16.0),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.purple.withOpacity(0.3),
+                        spreadRadius: 2,
+                        blurRadius: 10,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  padding: EdgeInsets.all(20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Good Morning",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24.0,
+                          color: Colors.purple,
+                        ),
+                      ),
+                      SizedBox(height: 10.0),
+                      Row(
+                        children: [
+                          Icon(Icons.thermostat, color: Colors.purple),
+                          SizedBox(width: 10.0),
+                          Text(
+                            "22°C",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.0,
+                              color: Colors.purpleAccent,
+
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20.0),
+                      Row(
+                        children: [
+                          Icon(Icons.location_on, color: Colors.purple),
+                          SizedBox(width: 10.0),
+                          Text(
+                            "New York, NY",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.0,
+                              color: Colors.purpleAccent,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
               SizedBox(height: 16.0),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -855,986 +921,995 @@ class _PriceFilterState extends State<PriceFilter> {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 30,vertical: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.purple.withOpacity(0.2),
-                      blurRadius: 16,
-                      offset: Offset(0, 8),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(height: 10.0),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.red.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 7,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Column(
-                            children: [
-                              Column(children: [
-                                Text.rich(TextSpan(
-                                  text:
-                                  "Note:                                                                 ",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.red,
-                                  ),
-                                )),
-                                Text.rich(TextSpan(
-                                  text:
-                                  "Select the filters so that you can find good results",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.purple,
-                                  ),
-                                ))
-                              ]),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.purple.withOpacity(0.2),
+                        blurRadius: 16,
+                        offset: Offset(0, 8),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 20.0),
+                      Text("Apply Filters",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.purple),),
+                      SizedBox(height: 30.0),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.red.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 7,
+                                offset: Offset(0, 3),
+                              ),
                             ],
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: Column(
+                              children: [
+                                Column(children: [
+                                  Text.rich(TextSpan(
+                                    text:
+                                    "Note:                                                                 ",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.red,
+                                    ),
+                                  )),
+                                  Text.rich(TextSpan(
+                                    text:
+                                    "Select the filters so that you can find good results",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.purple,
+                                    ),
+                                  ))
+                                ]),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 20.0),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Shop By Price",
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.pinkAccent,
+                      SizedBox(height: 20.0),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Shop By Price",
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.deepPurple,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 16),
-                        Text(
-                          "Min Value:",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.purple[900],
+                          SizedBox(height: 16),
+                          Text(
+                            "Min Value:",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.purple[900],
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 8),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.lightBlueAccent.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.all(8),
-                                child: Icon(
-                                  Icons.monetization_on,
-                                  color: Colors.purple[900],
-                                ),
-                              ),
-                              Expanded(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Enter Minimum Value",
-                                    border: InputBorder.none,
+                          SizedBox(height: 8),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.lightBlueAccent.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Icon(
+                                    Icons.monetization_on,
+                                    color: Colors.purple[900],
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        Text(
-                          "Maximum Value",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.purple[900],
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.lightBlueAccent.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.all(8),
-                                child: Icon(
-                                  Icons.monetization_on,
-                                  color: Colors.purple[900],
-                                ),
-                              ),
-                              Expanded(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Enter Maximum Value",
-                                    border: InputBorder.none,
+                                Expanded(
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Enter Minimum Value",
+                                      border: InputBorder.none,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
+                          SizedBox(height: 16),
+                          Text(
+                            "Maximum Value",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.purple[900],
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.lightBlueAccent.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Icon(
+                                    Icons.monetization_on,
+                                    color: Colors.purple[900],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Enter Maximum Value",
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
 
-                    SizedBox(height: 1),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10,vertical: 60),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                      SizedBox(height: 1),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10,vertical: 60),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.lightBlueAccent.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.white,
+                                blurRadius: 5,
+                                offset: Offset(1, 5),
+                              ),
+                            ],
+                          ),
+                          child: RangeSlider(
+                            values: _currentRangeValues,
+                            min: 1,
+                            max: 4995,
+                            divisions: 3,
+                            labels: RangeLabels(
+                              _currentRangeValues.start.round().toString(),
+                              _currentRangeValues.end.round().toString(),
+                            ),
+                            onChanged: (RangeValues values) {
+                              setState(() {
+                                _currentRangeValues = values;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+
+                      Container(
                         decoration: BoxDecoration(
-                          color: Colors.lightBlueAccent.withOpacity(0.1),
+                          gradient: LinearGradient(
+                            colors: [Color(0xFFff0066), Color(0xFFffccff),],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.purpleAccent,
+                              blurRadius: 5,
+                              offset: Offset(2, 3),
+                            ),
+                          ],
+                        ),
+
+
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 5),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                "Book Availabity",
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            AvailabilityCheckbox(),
+                          ],
+                        ),
+
+
+                      ),
+
+                      SizedBox(height: 46),
+                      Container(
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Colors.pinkAccent, Colors.purpleAccent],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.white,
+                              color: Colors.purple.withOpacity(0.2),
+                              blurRadius: 16,
+                              offset: Offset(0, 8),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Book Catergory",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Icon(
+                                  Icons.arrow_drop_down,
+                                  color: Colors.white,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 10),
+                            DropdownButtonFormField(
+                              items: [
+                                DropdownMenuItem(
+                                  child: Text("Historical Fiction",
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                  value: "Historical Fiction",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text("Non-fiction",
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                  value: "Non-fiction",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text("Fiction",
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                  value: "Fiction",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text("Romance novel",
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                  value: "Romance novel",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text("Children's literature",
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                  value: "Children's literature",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text("Horror",
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                  value: "Horror",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text("Biography",
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                  value: "Biography",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text("Memoir",
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                  value: "Memoir",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text("Science fiction",
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                  value: "Science fiction",
+                                ),
+
+                              ],
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(
+                                    color: Colors.purple,
+                                    width: 1.5,
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(
+                                    color: Colors.purple[400]!,
+                                    width: 1.5,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(
+                                    color: Colors.purple,
+                                    width: 1.5,
+                                  ),
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                                hintText: "Select book catergory",
+                                hintStyle: TextStyle(
+                                  color: Colors.grey[400],
+                                ),
+                              ),
+                              onChanged: (value) {},
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 46),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.purpleAccent],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.purple.withOpacity(0.2),
+                              blurRadius: 16,
+                              offset: Offset(0, 8),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: [
+
+                            SizedBox(height: 26),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Book Class",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_drop_down,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                DropdownButtonFormField(
+                                  items: [
+                                    DropdownMenuItem(
+                                      child: Text(" Class 1",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Class 1",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Class 2",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Class 2",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Class 3",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Class 3",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Class 4",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Class 4",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Class 5",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Class 5",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Class 6",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Class 6",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Class 7",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Class 7",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Class 8",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Class 8",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Class 9",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Class 9",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Class 10",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Class 10",
+                                    ),
+
+                                  ],
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple[400]!,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    hintText: "Select book class",
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey[400],
+                                    ),
+                                  ),
+                                  onChanged: (value) {},
+                                ),
+                              ],
+                            ),
+
+
+                            SizedBox(height: 26),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Book Semester",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_drop_down,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                DropdownButtonFormField(
+                                  items: [
+                                    DropdownMenuItem(
+                                      child: Text(" Semester 1",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Semester 1",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Semester 2",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Semester 2",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Semester 3",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Semester 3",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Semester 4",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Semester 4",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Semester 5",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Semester 5",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Semester 6",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Semester 6",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Semester 7",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Semester 7",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("Semester 8",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "Semester 8",
+                                    ),
+
+                                  ],
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple[400]!,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    hintText: "Select book semester",
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey[400],
+                                    ),
+                                  ),
+                                  onChanged: (value) {},
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      SizedBox(height: 46),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Colors.purple, Colors.purpleAccent],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.purple.withOpacity(0.2),
+                              blurRadius: 16,
+                              offset: Offset(0, 8),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: [
+
+                            SizedBox(height: 26),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Book School",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_drop_down,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                DropdownButtonFormField(
+                                  items: [
+                                    DropdownMenuItem(
+                                      child: Text(" School 1",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "School 1",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("School 2",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "School 2",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("School 3",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "School 3",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("School 4",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "School 4",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("School 5",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "School 5",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("School 6",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "School 6",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("School 7",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "School 7",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("School 8",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "School 8",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("School 9",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "School 9",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("School 10",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "School 10",
+                                    ),
+
+                                  ],
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple[400]!,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    hintText: "Select book School",
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey[400],
+                                    ),
+                                  ),
+                                  onChanged: (value) {},
+                                ),
+                              ],
+                            ),
+
+
+                            SizedBox(height: 26),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Book College",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_drop_down,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                DropdownButtonFormField(
+                                  items: [
+                                    DropdownMenuItem(
+                                      child: Text("College 1",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "College 1",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("College 2",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "College 2",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("College 3",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "College 3",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("College 4",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "College 4",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("College 5",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "College 5",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("College 6",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "College 6",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("College 7",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "College 7",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("College 8",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "College 8",
+                                    ),
+
+                                  ],
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple[400]!,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    hintText: "Select book college",
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey[400],
+                                    ),
+                                  ),
+                                  onChanged: (value) {},
+                                ),
+                              ],
+                            ),
+
+
+                            SizedBox(height: 26),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Book University",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_drop_down,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                DropdownButtonFormField(
+                                  items: [
+                                    DropdownMenuItem(
+                                      child: Text("University 1",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "University 1",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("University 2",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "University 2",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("University 3",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "University 3",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("University 4",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "University 4",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("University 5",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "University 5",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("University 6",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "University 6",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("University 7",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "University 7",
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("University 8",
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                                      value: "University 8",
+                                    ),
+
+                                  ],
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple[400]!,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: Colors.purple,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    hintText: "Select book university",
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey[400],
+                                    ),
+                                  ),
+                                  onChanged: (value) {},
+                                ),
+                              ],
+                            ),
+
+
+
+                          ],
+                        ),
+                      ),
+
+
+
+
+
+
+
+
+
+
+
+                      SizedBox(height: 46),
+
+
+
+
+
+
+
+
+
+
+
+
+                      SizedBox(height: 16),
+
+                      SizedBox(height: 16),
+
+
+
+
+
+
+
+
+
+                      SizedBox(height: 70),
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Colors.purpleAccent, Colors.pinkAccent],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.purpleAccent.withOpacity(0.2),
                               blurRadius: 5,
                               offset: Offset(1, 5),
                             ),
                           ],
                         ),
-                        child: RangeSlider(
-                          values: _currentRangeValues,
-                          min: 1,
-                          max: 4995,
-                          divisions: 3,
-                          labels: RangeLabels(
-                            _currentRangeValues.start.round().toString(),
-                            _currentRangeValues.end.round().toString(),
-                          ),
-                          onChanged: (RangeValues values) {
-                            setState(() {
-                              _currentRangeValues = values;
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-
-                    Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Color(0xFFff0066), Color(0xFFffccff),],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.purpleAccent,
-                            blurRadius: 5,
-                            offset: Offset(2, 3),
-                          ),
-                        ],
-                      ),
-
-
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 5),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text(
-                              "Book Availabity",
-                              style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                        child: MaterialButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Apply",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
                           ),
-                          SizedBox(height: 5),
-                          AvailabilityCheckbox(),
-                        ],
-                      ),
-
-
-                    ),
-
-                    SizedBox(height: 46),
-                    Container(
-                      padding: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Colors.pinkAccent, Colors.purpleAccent],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.purple.withOpacity(0.2),
-                            blurRadius: 16,
-                            offset: Offset(0, 8),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Book Catergory",
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                              Icon(
-                                Icons.arrow_drop_down,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 10),
-                          DropdownButtonFormField(
-                            items: [
-                              DropdownMenuItem(
-                                child: Text("Historical Fiction",
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                value: "Historical Fiction",
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Non-fiction",
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                value: "Non-fiction",
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Fiction",
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                value: "Fiction",
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Romance novel",
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                value: "Romance novel",
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Children's literature",
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                value: "Children's literature",
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Horror",
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                value: "Horror",
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Biography",
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                value: "Biography",
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Memoir",
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                value: "Memoir",
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Science fiction",
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                value: "Science fiction",
-                              ),
-
-                            ],
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                  color: Colors.purple,
-                                  width: 1.5,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                  color: Colors.purple[400]!,
-                                  width: 1.5,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                  color: Colors.purple,
-                                  width: 1.5,
-                                ),
-                              ),
-                              filled: true,
-                              fillColor: Colors.white,
-                              hintText: "Select book catergory",
-                              hintStyle: TextStyle(
-                                color: Colors.grey[400],
-                              ),
-                            ),
-                            onChanged: (value) {},
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 46),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Colors.blue, Colors.purpleAccent],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.purple.withOpacity(0.2),
-                            blurRadius: 16,
-                            offset: Offset(0, 8),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-
-                          SizedBox(height: 26),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Book Class",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              DropdownButtonFormField(
-                                items: [
-                                  DropdownMenuItem(
-                                    child: Text(" Class 1",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Class 1",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Class 2",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Class 2",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Class 3",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Class 3",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Class 4",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Class 4",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Class 5",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Class 5",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Class 6",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Class 6",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Class 7",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Class 7",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Class 8",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Class 8",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Class 9",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Class 9",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Class 10",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Class 10",
-                                  ),
-
-                                ],
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple[400]!,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  hintText: "Select book class",
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey[400],
-                                  ),
-                                ),
-                                onChanged: (value) {},
-                              ),
-                            ],
-                          ),
-
-
-                          SizedBox(height: 26),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Book Semester",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              DropdownButtonFormField(
-                                items: [
-                                  DropdownMenuItem(
-                                    child: Text(" Semester 1",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Semester 1",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Semester 2",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Semester 2",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Semester 3",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Semester 3",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Semester 4",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Semester 4",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Semester 5",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Semester 5",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Semester 6",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Semester 6",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Semester 7",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Semester 7",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Semester 8",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "Semester 8",
-                                  ),
-
-                                ],
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple[400]!,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  hintText: "Select book semester",
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey[400],
-                                  ),
-                                ),
-                                onChanged: (value) {},
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    SizedBox(height: 46),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Colors.red, Colors.yellow],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.purple.withOpacity(0.2),
-                            blurRadius: 16,
-                            offset: Offset(0, 8),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-
-                          SizedBox(height: 26),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Book School",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              DropdownButtonFormField(
-                                items: [
-                                  DropdownMenuItem(
-                                    child: Text(" School 1",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "School 1",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("School 2",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "School 2",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("School 3",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "School 3",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("School 4",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "School 4",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("School 5",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "School 5",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("School 6",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "School 6",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("School 7",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "School 7",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("School 8",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "School 8",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("School 9",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "School 9",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("School 10",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "School 10",
-                                  ),
-
-                                ],
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple[400]!,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  hintText: "Select book School",
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey[400],
-                                  ),
-                                ),
-                                onChanged: (value) {},
-                              ),
-                            ],
-                          ),
-
-
-                          SizedBox(height: 26),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Book College",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              DropdownButtonFormField(
-                                items: [
-                                  DropdownMenuItem(
-                                    child: Text("College 1",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "College 1",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("College 2",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "College 2",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("College 3",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "College 3",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("College 4",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "College 4",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("College 5",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "College 5",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("College 6",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "College 6",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("College 7",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "College 7",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("College 8",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "College 8",
-                                  ),
-
-                                ],
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple[400]!,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  hintText: "Select book college",
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey[400],
-                                  ),
-                                ),
-                                onChanged: (value) {},
-                              ),
-                            ],
-                          ),
-
-
-                          SizedBox(height: 26),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Book University",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              DropdownButtonFormField(
-                                items: [
-                                  DropdownMenuItem(
-                                    child: Text("University 1",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "University 1",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("University 2",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "University 2",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("University 3",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "University 3",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("University 4",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "University 4",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("University 5",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "University 5",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("University 6",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "University 6",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("University 7",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "University 7",
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("University 8",
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
-                                    value: "University 8",
-                                  ),
-
-                                ],
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple[400]!,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: Colors.purple,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  hintText: "Select book university",
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey[400],
-                                  ),
-                                ),
-                                onChanged: (value) {},
-                              ),
-                            ],
-                          ),
-
-
-
-                        ],
-                      ),
-                    ),
-
-
-
-
-
-
-
-
-
-
-
-                    SizedBox(height: 46),
-
-
-
-
-
-
-
-
-
-
-
-
-                    SizedBox(height: 16),
-
-                    SizedBox(height: 16),
-
-
-
-
-
-
-
-
-
-                    SizedBox(height: 70),
-                    Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Colors.purpleAccent, Colors.pinkAccent],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.purpleAccent.withOpacity(0.2),
-                            blurRadius: 5,
-                            offset: Offset(1, 5),
-                          ),
-                        ],
-                      ),
-                      child: MaterialButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Apply",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 30),
-                  ],
+                      SizedBox(height: 30),
+                    ],
+                  ),
                 ),
               ),
 
@@ -1888,7 +1963,13 @@ class _PriceFilterState extends State<PriceFilter> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purpleAccent,
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+
+
+
+
+
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
