@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'CommentBox.dart';
-
+import 'package:practise/screens/home_screen/CommentBox.dart';
 
 class ProductPage2 extends StatefulWidget {
   @override
@@ -378,7 +376,7 @@ class _ProductPageState extends State<ProductPage2> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFf44336),
+                    primary: Colors.purple,
                   ),
                   child: Text(
                     "Add to Cart",
@@ -400,7 +398,7 @@ class _ProductPageState extends State<ProductPage2> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
+                    primary: Colors.purpleAccent,
                   ),
                   child: Text(
                     "Chat",
@@ -430,7 +428,8 @@ class _ProductPageState extends State<ProductPage2> {
             //   ),
             // ),
 
-            CommentBox()
+            CommentBox(),
+            SizedBox(height: 30,),
           ],
 
 
