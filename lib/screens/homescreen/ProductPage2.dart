@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:practise/screens/home_screen/CommentBox.dart';
+
+import 'CommentBox.dart';
+
 
 class ProductPage2 extends StatefulWidget {
   @override
