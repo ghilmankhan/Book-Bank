@@ -8,12 +8,13 @@ class ForgotPasswordScreen extends StatelessWidget {
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
+
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: <Color>[
-                    Colors.yellowAccent,
-                    Colors.orangeAccent
+                    Colors.purpleAccent,
+                    Color(0xFFcc99ff),
                   ])
           ),
         ),
@@ -36,6 +37,7 @@ class ForgotPasswordScreen extends StatelessWidget {
 
       body: Container(
         decoration: BoxDecoration(
+          color: Colors.white,
           /* gradient: LinearGradient(
               begin: Alignment.bottomLeft, //bottomLeft
               end: Alignment.topRight,//topRight
@@ -52,11 +54,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 Color(0xFFB589D6),
               ],
             ),*/
-          image: DecorationImage(
-            image: NetworkImage(
-                'https://png.pngtree.com/background/20210716/original/pngtree-geometric-gradient-abstract-background-picture-image_1375364.jpg'),
-            fit: BoxFit.cover,
-          ),
+
         ),
         padding: EdgeInsets.all(16.0),
         alignment: Alignment.center,
@@ -73,7 +71,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
-                color: Colors.orange,
+                color: Colors.deepPurple,
               ),
             ),
             SizedBox(height: 16.0),
@@ -84,7 +82,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.orange.withOpacity(0.5),
+                    color: Colors.purple.withOpacity(0.5),
                     spreadRadius: 1,
                     blurRadius: 5,
                     offset: Offset(1, 4),
@@ -101,7 +99,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                         "Note:                                                                 ",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          color: Colors.red,
+                          color: Colors.purple,
                         ),
                       )),
                       Text.rich(TextSpan(
@@ -109,7 +107,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                         "Enter your email address and we will send you a link to reset your password",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          color: Colors.orangeAccent,
+                          color: Colors.purpleAccent,
                         ),
                       ))
                     ]),
@@ -129,7 +127,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                     padding: EdgeInsets.all(8),
                     child: Icon(
                       Icons.email_rounded,
-                      color: Colors.orange,
+                      color: Colors.purple,
                     ),
                   ),
                   Expanded(
@@ -165,10 +163,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepOrange,
+                primary: Colors.purple,
                 onPrimary: Colors.white,
                 elevation: 3.0,
-                shadowColor: Colors.yellowAccent,
+                shadowColor: Colors.deepPurple,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16.0),
                 ),
@@ -188,14 +186,14 @@ class ForgotPasswordScreen extends StatelessWidget {
             IconButton(
               icon: Icon(
                 Icons.home,
-                color: Colors.deepOrange,
+                color: Colors.purple,
               ),
               onPressed: () {},
             ),
             IconButton(
               icon: Icon(
                 Icons.chat,
-                color: Colors.deepOrange,
+                color: Colors.purple,
               ),
               onPressed: () {},
             ),
@@ -203,14 +201,14 @@ class ForgotPasswordScreen extends StatelessWidget {
             IconButton(
               icon: Icon(
                 Icons.shopping_cart,
-                color: Colors.deepOrange,
+                color: Colors.purple,
               ),
               onPressed: () {},
             ),
             IconButton(
               icon: Icon(
                 Icons.favorite,
-                color: Colors.deepOrange,
+                color: Colors.purple,
               ),
               onPressed: () {},
             ),
@@ -218,7 +216,7 @@ class ForgotPasswordScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.purpleAccent,
         child: Icon(Icons.add),
         onPressed: () {
 
@@ -245,8 +243,8 @@ class ResetPasswordScreen extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: <Color>[
-                    Colors.yellowAccent,
-                    Colors.orangeAccent
+                    Colors.purple,
+                    Color(0xFFffccff)
                   ])
           ),
         ),
@@ -270,11 +268,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
       body: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                'https://png.pngtree.com/background/20210716/original/pngtree-geometric-gradient-abstract-background-picture-image_1375364.jpg'),
-            fit: BoxFit.cover,
-          ),
+
         ),
         padding: EdgeInsets.all(16.0),
         alignment: Alignment.center,
@@ -285,9 +279,9 @@ class ResetPasswordScreen extends StatelessWidget {
             Text(
               'Reset your password',
               style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.deepOrange
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.deepPurple,
               ),
             ),
             SizedBox(height: 16.0),
@@ -302,7 +296,7 @@ class ResetPasswordScreen extends StatelessWidget {
                     padding: EdgeInsets.all(8),
                     child: Icon(
                       Icons.password,
-                      color: Colors.orange,
+                      color: Colors.purple,
                     ),
                   ),
                   Expanded(
@@ -328,7 +322,7 @@ class ResetPasswordScreen extends StatelessWidget {
                     padding: EdgeInsets.all(8),
                     child: Icon(
                       Icons.password_sharp,
-                      color: Colors.orange,
+                      color: Colors.purple,
                     ),
                   ),
                   Expanded(
@@ -358,10 +352,10 @@ class ResetPasswordScreen extends StatelessWidget {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepOrange,
+                primary: Colors.purple,
                 onPrimary: Colors.white,
                 elevation: 3.0,
-                shadowColor: Colors.yellowAccent,
+                shadowColor: Colors.purpleAccent,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16.0),
                 ),
@@ -381,14 +375,14 @@ class ResetPasswordScreen extends StatelessWidget {
             IconButton(
               icon: Icon(
                 Icons.home,
-                color: Colors.deepOrange,
+                color: Colors.purple,
               ),
               onPressed: () {},
             ),
             IconButton(
               icon: Icon(
                 Icons.chat,
-                color: Colors.deepOrange,
+                color: Colors.purple,
               ),
               onPressed: () {},
             ),
@@ -396,14 +390,14 @@ class ResetPasswordScreen extends StatelessWidget {
             IconButton(
               icon: Icon(
                 Icons.shopping_cart,
-                color: Colors.deepOrange,
+                color: Colors.purple,
               ),
               onPressed: () {},
             ),
             IconButton(
               icon: Icon(
                 Icons.favorite,
-                color: Colors.deepOrange,
+                color: Colors.purple,
               ),
               onPressed: () {},
             ),
@@ -411,7 +405,7 @@ class ResetPasswordScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.purpleAccent,
         child: Icon(Icons.add),
         onPressed: () {
 
