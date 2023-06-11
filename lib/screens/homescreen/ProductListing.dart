@@ -1169,7 +1169,10 @@ class _ProductListingState extends State<ProductListing> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, ProductListing.id);
+
+                      },
                       style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 2),
@@ -2352,7 +2355,10 @@ class _NewScreenState extends State<NewScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, ProductListing.id);
+
+                      },
                       style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 2),
@@ -2456,7 +2462,6 @@ class _NewScreenState extends State<NewScreen> {
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
 
 
 

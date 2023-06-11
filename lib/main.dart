@@ -13,12 +13,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-<<<<<<< HEAD
+
 import 'package:book_bank/screens/homescreen/cart.dart';
 
-=======
-//i am progrramer.
->>>>>>> 9feee357fd656149f45620abc09a706a6e0db037
+
+
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
