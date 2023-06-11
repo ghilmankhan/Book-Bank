@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:book_bank/screens/homescreen/cart.dart';
+import 'package:book_bank/screens/homescreen/ProductListing.dart';
+import 'package:book_bank/screens/homescreen/DonationScreenSteps.dart';
+import 'package:book_bank/screens/homescreen/favouritelist.dart';
+
+
+import 'ProductPage2.dart';
+import 'WishlistScreen.dart';
 
 
 class homescreen2 extends StatefulWidget {
+  static const String id = 'home_screen_2';
 
   @override
   State<homescreen2> createState() => _homescreen2State();
@@ -70,12 +79,14 @@ class _homescreen2State extends State<homescreen2> {
                           color: Colors.deepPurple,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, cart.id);
+                      },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 5),
+                        horizontal: 15, ),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           fixedSize: Size(80, 25),
@@ -86,7 +97,9 @@ class _homescreen2State extends State<homescreen2> {
                           color: Colors.white,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, ProductPage2.id);
+                      },
                     ),
                   ),
                 ],
@@ -101,7 +114,7 @@ class _homescreen2State extends State<homescreen2> {
   Widget singleproductsfornearme(){
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10),
-      height: 420,
+      height: 480,
       width: 160,
       decoration: BoxDecoration(
         color: Color(0xffffcccc),
@@ -112,7 +125,10 @@ class _homescreen2State extends State<homescreen2> {
         children: [
           Expanded(
               flex: 1,
-              child: Image.network('https://media.takealot.com/covers_images/92ec803ee5994066a0fec7455520c122/s-zoom.file')),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.network('https://media.takealot.com/covers_images/92ec803ee5994066a0fec7455520c122/s-zoom.file'),
+              )),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -159,12 +175,15 @@ class _homescreen2State extends State<homescreen2> {
                           color: Colors.deepPurple,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, cart.id);
+
+                      },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 5),
+                        horizontal: 15, ),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           fixedSize: Size(80, 25),
@@ -175,7 +194,10 @@ class _homescreen2State extends State<homescreen2> {
                           color: Colors.white,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, ProductPage2.id);
+
+                      },
                     ),
                   ),
                 ],
@@ -202,8 +224,11 @@ class _homescreen2State extends State<homescreen2> {
         children: [
           Expanded(
               flex: 1,
-              child: Image.network(
-                  'https://www.transparenthands.org/wp-content/uploads/2017/10/Edhi-Foundation-A-Non-Profit-welfare-Organization.jpg')),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.network(
+                    'https://www.transparenthands.org/wp-content/uploads/2017/10/Edhi-Foundation-A-Non-Profit-welfare-Organization.jpg'),
+              )),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -250,7 +275,10 @@ class _homescreen2State extends State<homescreen2> {
                           color: Colors.deepPurple,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, DonationScreenSteps.id);
+
+                      },
                     ),
                   ),
                   Padding(
@@ -266,7 +294,9 @@ class _homescreen2State extends State<homescreen2> {
                           color: Colors.white,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, ProductPage2.id);
+                      },
                     ),
                   ),
                 ],
@@ -333,7 +363,7 @@ class _homescreen2State extends State<homescreen2> {
                       'Muhammad Ghilman Khan',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20.0,
+                        fontSize: 15.0,
                         fontWeight: FontWeight.w800,
                       ),
                     ),
@@ -341,7 +371,7 @@ class _homescreen2State extends State<homescreen2> {
                       'khanghilman96@gmail.com',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 15.0,
+                        fontSize: 10.0,
                       ),
                     ),
                   ],
@@ -411,7 +441,7 @@ class _homescreen2State extends State<homescreen2> {
             ListTile(
               leading: Icon(Icons.payment, color: Colors.purple),
               title: Text(
-                'Payment Centre',
+                'Payment settings',
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,
@@ -421,7 +451,7 @@ class _homescreen2State extends State<homescreen2> {
               onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.my_library_books, color: Colors.purple),
+              leading: Icon(Icons.payment, color: Colors.purple),
               title: Text(
                 'My Books',
                 style: TextStyle(
@@ -435,17 +465,19 @@ class _homescreen2State extends State<homescreen2> {
             ListTile(
               leading: Icon(Icons.subscriptions, color: Colors.purple),
               title: Text(
-                'My Subscription',
+                'WishList',
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,
                   color: Colors.purpleAccent,
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, WishlistScreen.id);
+              },
             ),
             ListTile(
-              leading: Icon(Icons.contacts, color: Colors.purple),
+              leading: Icon(Icons.list_alt_sharp, color: Colors.purple),
               title: Text(
                 'Contact Us',
                 style: TextStyle(
@@ -846,7 +878,10 @@ class _homescreen2State extends State<homescreen2> {
                 Icons.home,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, homescreen2.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
@@ -861,14 +896,20 @@ class _homescreen2State extends State<homescreen2> {
                 Icons.shopping_cart,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, cart.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
                 Icons.favorite,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, favouritelist.id);
+
+              },
             ),
           ],
         ),
@@ -877,7 +918,7 @@ class _homescreen2State extends State<homescreen2> {
         backgroundColor: Colors.purpleAccent,
         child: Icon(Icons.add),
         onPressed: () {
-
+          Navigator.pushNamed(context, ProductListing.id);
 
         },
       ),
@@ -1933,7 +1974,10 @@ class _PriceFilterState extends State<PriceFilter> {
                 Icons.home,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, homescreen2.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
@@ -1948,14 +1992,20 @@ class _PriceFilterState extends State<PriceFilter> {
                 Icons.shopping_cart,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, cart.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
                 Icons.favorite,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, favouritelist.id);
+
+              },
             ),
           ],
         ),
@@ -1964,14 +2014,12 @@ class _PriceFilterState extends State<PriceFilter> {
         backgroundColor: Colors.purpleAccent,
         child: Icon(Icons.add),
         onPressed: () {
-
-
-
-
+          Navigator.pushNamed(context, ProductListing.id);
 
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
 
 
 

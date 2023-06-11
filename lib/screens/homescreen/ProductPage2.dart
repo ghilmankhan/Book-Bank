@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'CommentBox.dart';
+import 'package:book_bank/screens/homescreen/cart.dart';
 
 
 class ProductPage2 extends StatefulWidget {
+  static const String id = 'ProductPage2';
+
   @override
   _ProductPageState createState() => _ProductPageState();
 }
@@ -96,7 +99,9 @@ class _ProductPageState extends State<ProductPage2> {
             icon: const Icon(Icons.add_shopping_cart),
             tooltip: 'add shopping cart Icon',
             color: Colors.purple,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, cart.id);
+            },
           ), //IconButton
         ],
         //<Widget>[]
@@ -363,6 +368,8 @@ class _ProductPageState extends State<ProductPage2> {
               children: [
                 ElevatedButton(
                   onPressed: () {
+                    Navigator.pushNamed(context, cart.id);
+
                     setState(() {
                       itemCount++;
                     });
@@ -387,6 +394,7 @@ class _ProductPageState extends State<ProductPage2> {
                 ),
                 ElevatedButton(
                   onPressed: () {
+
                     // Implement chat functionality
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(

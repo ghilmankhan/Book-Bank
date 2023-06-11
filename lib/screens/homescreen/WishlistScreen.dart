@@ -1,6 +1,12 @@
 import 'dart:ui';
 
+import 'package:book_bank/screens/homescreen/ProductPage2.dart';
 import 'package:flutter/material.dart';
+import 'package:book_bank/screens/homescreen/cart.dart';
+import 'package:book_bank/screens/homescreen/favouritelist.dart';
+import 'package:book_bank/screens/homescreen/homescreen2.dart';
+import 'ProductListing.dart';
+
 
 class Product {
   final String name;
@@ -163,6 +169,7 @@ class Body extends StatelessWidget {
                                 children: [
                                   ElevatedButton(
                                     onPressed: () {
+                                      Navigator.pushNamed(context, cart.id);
                                       ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
                                           content: Text(
@@ -185,6 +192,7 @@ class Body extends StatelessWidget {
                                   ),
                                   ElevatedButton(
                                     onPressed: () {
+                                      Navigator.pushNamed(context, ProductPage2.id);
                                       ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
                                           content: Text(
@@ -229,6 +237,7 @@ class Body extends StatelessWidget {
 
 
 class WishlistScreen extends StatefulWidget {
+  static const String id= 'WishlistScreen';
   @override
   _WishlistScreenState createState() => _WishlistScreenState();
 }
@@ -280,7 +289,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 3),
               child: Text('Wish List',
                 style: TextStyle(
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.purple,
                 ),
@@ -372,7 +381,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                     borderRadius: BorderRadius.circular(16.0),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.blue.withOpacity(0.5),
+                        color: Colors.pinkAccent.withOpacity(0.5),
                         blurRadius: 10.0,
                         offset: Offset(2, 4),
                       ),
@@ -381,8 +390,10 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
                     child: Image.network(
-                      'https://chatelaine.com/wp-content/uploads/2023/03/spring-books-2023-feature.jpg',
+                      'https://media.slidesgo.com/storage/31028003/responsive-images/17-book-wishlist___media_library_original_278_384.jpg',
                       fit: BoxFit.cover,
+                      height: 300,
+                      width: 200,
                     ),
                   ),
                 ),
@@ -1756,7 +1767,7 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                   fontSize: 30.0,
                   fontFamily: 'Times New Roman',
                   fontWeight: FontWeight.bold,
-                  color: Colors.deepOrange,
+                  color: Colors.purple,
                   shadows: [
                     Shadow(
                       blurRadius: 2.0,
@@ -1774,7 +1785,7 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                   borderRadius: BorderRadius.circular(16.0),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.purple.withOpacity(0.1),
+                      color: Colors.purple.withOpacity(0.5),
                       blurRadius: 10.0,
                       offset: Offset(0, 4),
                     ),
@@ -1783,8 +1794,10 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16.0),
                   child: Image.network(
-                    'https://www.ziffit.com/content/img/files/8415/3415/6714/banner-sellmybooks-mobile--ae3a0891ef749e4bb04a12fb0eed6e4f0cd1a058--.png',
+                    'https://thumbs.dreamstime.com/b/open-book-stack-books-rocket-pencil-fire-blue-background-vector-flat-illustration-reading-learning-power-logo-193097103.jpg',
                     fit: BoxFit.cover,
+                    height: 300,
+                    width: 300,
                   ),
                 ),
               ),
@@ -2804,7 +2817,10 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, ProductListing.id);
+
+                      },
                       style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 2),
@@ -2860,7 +2876,10 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                 Icons.home,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, homescreen2.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
@@ -2875,14 +2894,20 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                 Icons.shopping_cart,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, cart.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
                 Icons.favorite,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, favouritelist.id);
+
+              },
             ),
           ],
         ),
@@ -2890,7 +2915,10 @@ class _wishlistregistrationState extends State<wishlistregistration> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purpleAccent,
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, ProductListing.id);
+
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );

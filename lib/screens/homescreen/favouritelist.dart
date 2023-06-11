@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'ProductListing.dart';
+import 'package:book_bank/screens/homescreen/CheckoutScreen.dart';
+import 'package:book_bank/screens/homescreen/DonationScreenSteps.dart';
+import 'package:book_bank/screens/homescreen/ProductListing.dart';
+import 'package:book_bank/screens/homescreen/ProductPage2.dart';
+import 'package:book_bank/screens/homescreen/WishlistScreen.dart';
+import 'package:book_bank/screens/homescreen/cart.dart';
+import 'package:book_bank/screens/homescreen/homescreen2.dart';
+
+
+
 class Body extends StatelessWidget {
   double getProportionalScreenWidth(BuildContext context, double percentage) {
     // Get the screen width using MediaQuery
@@ -15,8 +26,8 @@ class Body extends StatelessWidget {
       padding: const EdgeInsets.all(13.0),
       child: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.yellowAccent, Colors.orangeAccent],
+          gradient: LinearGradient( // color: Color(0xFFcc99ff), cc99ff
+            colors: [Color(0xFFffccff), Color(0xFFcc99ff)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -154,6 +165,8 @@ class Body extends StatelessWidget {
                                 children: [
                                   ElevatedButton(
                                     onPressed: () {
+                                      Navigator.pushNamed(context, cart.id);
+
                                       ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
                                           content: Text(
@@ -176,6 +189,8 @@ class Body extends StatelessWidget {
                                   ),
                                   ElevatedButton(
                                     onPressed: () {
+                                      Navigator.pushNamed(context, ProductPage2.id);
+
                                       ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
                                           content: Text(
@@ -215,6 +230,7 @@ class Body extends StatelessWidget {
 
 
 class favouritelist extends StatelessWidget {
+  static const String id = 'favouritelist';
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -347,7 +363,7 @@ class favouritelist extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16.0),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
+                        color: Colors.purpleAccent.withOpacity(0.5),
                         blurRadius: 10.0,
                         offset: Offset(0, 4),
                       ),
@@ -356,8 +372,11 @@ class favouritelist extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
                     child: Image.network(
-                      'https://wp.penguin.co.uk/wp-content/uploads/2022/03/Article-Card-Puffin-6-9-Year-Olds.jpg',
+                      'https://www.kristendukephotography.com/wp-content/uploads/2015/08/My-favorite-Books-List.jpg',
                       fit: BoxFit.cover,
+                      height: 300,
+                      width: 300,
+
                     ),
                   ),
                 ),
@@ -385,7 +404,10 @@ class favouritelist extends StatelessWidget {
                 Icons.home,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, homescreen2.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
@@ -400,14 +422,20 @@ class favouritelist extends StatelessWidget {
                 Icons.shopping_cart,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, cart.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
                 Icons.favorite,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, favouritelist.id);
+
+              },
             ),
           ],
         ),
@@ -415,7 +443,10 @@ class favouritelist extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purpleAccent,
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, ProductListing.id);
+
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 

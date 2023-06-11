@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:book_bank/screens/homescreen/cart.dart';
+import 'package:book_bank/screens/homescreen/DonationScreenSteps.dart';
+import 'package:book_bank/screens/homescreen/ProductListing.dart';
+import 'package:book_bank/screens/homescreen/ProductPage2.dart';
+import 'package:book_bank/screens/homescreen/WishlistScreen.dart';
+import 'package:book_bank/screens/homescreen/favouritelist.dart';
+import 'package:book_bank/screens/homescreen/homescreen2.dart';
+
 
 enum PaymentMethod { credit_card, paypal, bitcoin }
 
 class CheckoutScreen extends StatefulWidget {
+  static const String id = 'CheckoutScreen';
   const CheckoutScreen({Key? key}) : super(key: key);
 
   @override
@@ -418,50 +427,63 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        // to prevent the labels from being hidden when there are more than three tabs
-        selectedItemColor: Colors.white,
-        // use a bold and contrasting color for the active tab
-        unselectedItemColor: Colors.grey,
-        // use a muted color for inactive tabs
-        backgroundColor: Colors.purple,
-        // set the background color of the bar
-        showSelectedLabels: true,
-        // show the labels for the active tab
-        showUnselectedLabels: true,
-        // show the labels for inactive tabs
-        selectedLabelStyle:
-        TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-        // style the active label text
-        unselectedLabelStyle: TextStyle(fontSize: 14),
-        // style the inactive label text
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Add',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Wishlist',
-          ),
-        ],
-        onTap: (index) {
-          // handle tab switching here
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.home,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, homescreen2.id);
+
+              },
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.chat,
+                color: Colors.purple,
+              ),
+              onPressed: () {},
+            ),
+            SizedBox(width: 32),
+            IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, cart.id);
+
+              },
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.favorite,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, favouritelist.id);
+
+              },
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.purpleAccent,
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.pushNamed(context, ProductListing.id);
+
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
     );
   }
 }
@@ -659,99 +681,101 @@ class PaymentScreen extends StatelessWidget {
                       ],
                     ),
                     padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Client\'s Email:',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.purpleAccent,
-                          ),
-                        ),
-                        SizedBox(height: 8.0),
-                        Text(
-                          'johndoe@example.com',
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.deepPurple,
-                          ),
-                        ),
-                        SizedBox(height: 16.0),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Invoice Date:',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.purpleAccent,
-                              ),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Client\'s Email:',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.purpleAccent,
                             ),
-                            Text(
-                              'May 1, 2023',
-                              style: TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.purple,
-                              ),
+                          ),
+                          SizedBox(height: 8.0),
+                          Text(
+                            'johndoe@example.com',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.deepPurple,
                             ),
-                          ],
-                        ),
-                        SizedBox(height: 16.0),
-                        Container(
-                          child: Column(
+                          ),
+                          SizedBox(height: 16.0),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
-                                child: Text(
-                                  'Items:',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.purple,
-                                  ),
+                              Text(
+                                'Invoice Date:',
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.purpleAccent,
                                 ),
                               ),
-                              SizedBox(height: 8.0),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.purple.withOpacity(0.1),
-                                      blurRadius: 10.0,
-                                      offset: Offset(0, 4),
-                                    ),
-                                  ],
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: itemsList.map((item) {
-                                      return Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(item['name'],),
-                                          Text('Quantity: ${item['quantity']}'),
-                                          Text('\$${item['price']}'),
-                                        ],
-                                      );
-                                    }).toList(),
-                                  ),
+                              Text(
+                                'May 1, 2023',
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.purple,
                                 ),
                               ),
                             ],
                           ),
-                        ),
+                          SizedBox(height: 16.0),
+                          Container(
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: Text(
+                                    'Items:',
+                                    style: TextStyle(
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.purple,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 8.0),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(16.0),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.purple.withOpacity(0.1),
+                                        blurRadius: 10.0,
+                                        offset: Offset(0, 4),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      children: itemsList.map((item) {
+                                        return Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(item['name'],),
+                                            Text('Quantity: ${item['quantity']}'),
+                                            Text('\$${item['price']}'),
+                                          ],
+                                        );
+                                      }).toList(),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
 
-                        SizedBox(height: 16.0),
+                          SizedBox(height: 16.0),
 
-                      ],
+                        ],
 
+                      ),
                     ),
 
 
@@ -773,93 +797,63 @@ class PaymentScreen extends StatelessWidget {
 
 
 
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        // to prevent the labels from being hidden when there are more than three tabs
-        selectedItemColor: Colors.white,
-        // use a bold and contrasting color for the active tab
-        unselectedItemColor: Colors.grey,
-        // use a muted color for inactive tabs
-        backgroundColor: Colors.purple,
-        // set the background color of the bar
-        showSelectedLabels: true,
-        // show the labels for the active tab
-        showUnselectedLabels: true,
-        // show the labels for inactive tabs
-        selectedLabelStyle:
-        TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-        // style the active label text
-        unselectedLabelStyle: TextStyle(fontSize: 14),
-        // style the inactive label text
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Add',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Wishlist',
-          ),
-        ],
-        onTap: (index) {
-          // handle tab switching here
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.home,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, homescreen2.id);
+
+              },
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.chat,
+                color: Colors.purple,
+              ),
+              onPressed: () {},
+            ),
+            SizedBox(width: 32),
+            IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, cart.id);
+
+              },
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.favorite,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, favouritelist.id);
+
+              },
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.purpleAccent,
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.pushNamed(context, ProductListing.id);
+
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
     );
   }
 }
-
-
-//Expanded(flex: 10,
-//child: Padding(
-//padding: const EdgeInsets.all(15),
-//child: Container(
-//width: 600,
-//height: 200,
-//decoration: BoxDecoration(
-//color: Colors.white,
-//borderRadius: BorderRadius.circular(16.0),
-//boxShadow: [
-//BoxShadow(
-//color: Colors.purple.withOpacity(0.1),
-//blurRadius: 10.0,
-//offset: Offset(0, 4),
-//),
-//],
-//),
-//padding: const EdgeInsets.all(16.0),
-//child: Column(
-//crossAxisAlignment: CrossAxisAlignment.start,
-//children: [
-//Text(
-//'Congratulations!',
-//style: TextStyle(
-//fontSize: 24.0,
-//fontWeight: FontWeight.bold,
-//),
-//),
-//SizedBox(height: 8.0),
-//Text(
-//'Your purchase has been successful.',
-//style: TextStyle(
-//fontSize: 16.0,
-//color: Colors.grey[600],
-//),
-//),
-//],
-//),
-//),
-//),
-//),

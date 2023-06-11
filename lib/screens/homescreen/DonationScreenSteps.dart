@@ -1,6 +1,12 @@
+import 'package:book_bank/screens/homescreen/homescreen2.dart';
 import 'package:flutter/material.dart';
+import 'package:book_bank/screens/homescreen/cart.dart';
+import 'package:book_bank/screens/homescreen/ProductListing.dart';
+import 'package:book_bank/screens/homescreen/DonationScreenSteps.dart';
+import 'package:book_bank/screens/homescreen/favouritelist.dart';
 
 class DonationScreen extends StatefulWidget {
+  static const String id ='DonationScreen';
   @override
   _DonationScreenState createState() => _DonationScreenState();
 }
@@ -368,12 +374,16 @@ class _DonationScreenState extends State<DonationScreen> {
         ),
         title: Text('Make a donation'),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, homescreen2.id);
+          },
           icon: Icon(Icons.arrow_back_ios),
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, homescreen2.id);
+            },
             icon: Icon(Icons.home),
           ),
           IconButton(
@@ -500,7 +510,10 @@ class _DonationScreenState extends State<DonationScreen> {
                 Icons.home,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, homescreen2.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
@@ -515,14 +528,20 @@ class _DonationScreenState extends State<DonationScreen> {
                 Icons.shopping_cart,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, cart.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
                 Icons.favorite,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, favouritelist.id);
+
+              },
             ),
           ],
         ),
@@ -531,7 +550,7 @@ class _DonationScreenState extends State<DonationScreen> {
         backgroundColor: Colors.purpleAccent,
         child: Icon(Icons.add),
         onPressed: () {
-
+          Navigator.pushNamed(context, ProductListing.id);
 
         },
       ),
@@ -600,6 +619,7 @@ class ConfirmationScreen extends StatelessWidget {
                   SizedBox(height: 32),
                   ElevatedButton(
                     onPressed: () {
+                      Navigator.pushNamed(context, homescreen2.id);
                       Text(
                         'Thanks for donating your textbooks. Your support is vital as it allows us to reach more underprivileged students in Pakistan in need of educational help. You will receive a confirmation notification soon.',
                         textAlign: TextAlign.center,
@@ -624,6 +644,7 @@ class ConfirmationScreen extends StatelessWidget {
 
 
 class DonationScreenSteps extends StatelessWidget {
+  static const String id = 'DonationScreenSteps';
   double getProportionalScreenWidth(BuildContext context, double percentage) {
     // Get the screen width using MediaQuery
     double screenWidth = MediaQuery.of(context).size.width;
@@ -996,7 +1017,10 @@ class DonationScreenSteps extends StatelessWidget {
                 Icons.home,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, homescreen2.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
@@ -1011,14 +1035,20 @@ class DonationScreenSteps extends StatelessWidget {
                 Icons.shopping_cart,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, cart.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
                 Icons.favorite,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, favouritelist.id);
+
+              },
             ),
           ],
         ),
@@ -1027,7 +1057,7 @@ class DonationScreenSteps extends StatelessWidget {
         backgroundColor: Colors.purpleAccent,
         child: Icon(Icons.add),
         onPressed: () {
-
+          Navigator.pushNamed(context, ProductListing.id);
 
         },
       ),

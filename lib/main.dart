@@ -1,11 +1,19 @@
 import 'package:book_bank/components/constant/constant.dart';
 import 'package:book_bank/generated/assets.dart';
+import 'package:book_bank/screens/homescreen/CheckoutScreen.dart';
+import 'package:book_bank/screens/homescreen/DonationScreenSteps.dart';
+import 'package:book_bank/screens/homescreen/ProductListing.dart';
+import 'package:book_bank/screens/homescreen/ProductPage2.dart';
+import 'package:book_bank/screens/homescreen/WishlistScreen.dart';
+import 'package:book_bank/screens/homescreen/favouritelist.dart';
 import 'package:book_bank/screens/homescreen/homescreen2.dart';
+import 'package:book_bank/view/get_start_screen/get_start_screen.dart';
 import 'package:book_bank/view/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:book_bank/screens/homescreen/cart.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +27,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       theme: ThemeData(
         primaryColor: appThemeColor,
         primaryColorDark: appThemeColor,
@@ -28,7 +36,28 @@ class MyApp extends StatelessWidget {
         primaryTextTheme:
         GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
       ),
-      home:  const SplashScreen(),
+
+
+      // home: SplashScreen(), old code
+      //new code
+      initialRoute: homescreen2.id,
+
+      routes: {
+         homescreen2.id: (context)=> homescreen2(),
+         cart.id: (context)=>  cart(),
+         ProductListing.id: (context)=>  ProductListing(),
+         ProductPage2.id: (context)=>  ProductPage2(),
+        DonationScreenSteps.id: (context)=>  DonationScreenSteps(),
+         favouritelist.id: (context)=>  favouritelist(),
+          WishlistScreen.id: (context)=>  WishlistScreen(),
+          CheckoutScreen.id: (context)=>  CheckoutScreen(),
+
+
+      },
+
+
+
+
     );
   }
   MaterialColor createMaterialColor(Color color) {

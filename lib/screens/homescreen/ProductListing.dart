@@ -1,6 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:book_bank/screens/homescreen/cart.dart';
+import 'package:book_bank/screens/homescreen/favouritelist.dart';
+import 'package:book_bank/screens/homescreen/homescreen2.dart';
+
 
 class Product {
   final String name;
@@ -11,6 +15,8 @@ class Product {
 
 
 class ProductListing extends StatefulWidget {
+  static const String id = 'ProductListing';
+
   @override
   _ProductListingState createState() => _ProductListingState();
 }
@@ -115,7 +121,7 @@ class _ProductListingState extends State<ProductListing> {
                   fontSize: 40.0,
                   fontFamily: 'Times New Roman',
                   fontWeight: FontWeight.bold,
-                  color: Colors.deepOrange,
+                  color: Colors.deepPurple,
                   shadows: [
                     Shadow(
                       blurRadius: 2.0,
@@ -142,7 +148,7 @@ class _ProductListingState extends State<ProductListing> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16.0),
                   child: Image.network(
-                    'https://www.ziffit.com/content/img/files/8415/3415/6714/banner-sellmybooks-mobile--ae3a0891ef749e4bb04a12fb0eed6e4f0cd1a058--.png',
+                    'https://d1e4pidl3fu268.cloudfront.net/769ee408-6c94-4c5b-b2ef-786f90e4ead7/BB85249399B7423394A42A8489A5DE20.crop_626x470_0,78.preview.jpeg',
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -1222,7 +1228,10 @@ class _ProductListingState extends State<ProductListing> {
                 Icons.home,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, homescreen2.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
@@ -1237,14 +1246,20 @@ class _ProductListingState extends State<ProductListing> {
                 Icons.shopping_cart,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, cart.id);
+
+              },
             ),
             IconButton(
               icon: Icon(
                 Icons.favorite,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, favouritelist.id);
+
+              },
             ),
           ],
         ),
@@ -1252,9 +1267,14 @@ class _ProductListingState extends State<ProductListing> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purpleAccent,
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, ProductListing.id);
+
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
+
 
     );
   }
@@ -2380,48 +2400,63 @@ class _NewScreenState extends State<NewScreen> {
 
 
 
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.deepPurpleAccent,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.chat,
-              color: Colors.deepPurpleAccent,
-            ),
-            label: 'Chat',
-          ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.home,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, homescreen2.id);
 
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add,
-              color: Colors.deepPurpleAccent,
+              },
             ),
-            label: 'add',
-          ),
+            IconButton(
+              icon: Icon(
+                Icons.chat,
+                color: Colors.purple,
+              ),
+              onPressed: () {},
+            ),
+            SizedBox(width: 32),
+            IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, cart.id);
 
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_cart,
-              color: Colors.deepPurpleAccent,
+              },
             ),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite,
-              color: Colors.deepPurpleAccent,
+            IconButton(
+              icon: Icon(
+                Icons.favorite,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, favouritelist.id);
+
+              },
             ),
-            label: 'Wishlist',
-          ),
-        ],
-        backgroundColor: Colors.black,
+          ],
+        ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.purpleAccent,
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.pushNamed(context, ProductListing.id);
+
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
 
 
 

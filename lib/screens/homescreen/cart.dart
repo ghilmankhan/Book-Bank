@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'CheckoutScreen.dart';
+import 'package:book_bank/screens/homescreen/cart.dart';
+import 'package:book_bank/screens/homescreen/ProductListing.dart';
+import 'package:book_bank/screens/homescreen/DonationScreenSteps.dart';
+import 'package:book_bank/screens/homescreen/favouritelist.dart';
+import 'package:book_bank/screens/homescreen/homescreen2.dart';
+
+
 class Body extends StatelessWidget {
   double getProportionalScreenWidth(BuildContext context, double percentage) {
     // Get the screen width using MediaQuery
@@ -113,6 +121,8 @@ class Body extends StatelessWidget {
 
 
 class cart extends StatelessWidget {
+  static const String id = 'cart';
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -151,7 +161,7 @@ class cart extends StatelessWidget {
               child: Text(
                 "Your Cart",
                 style: TextStyle(
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.purple,
                 ),
@@ -325,9 +335,12 @@ class cart extends StatelessWidget {
                                         ),
                                         child: Text(
                                           "Check-Out",
-                                          style: TextStyle(fontSize: 20),
+                                          style: TextStyle(fontSize: 15),
                                         ),
-                                        onPressed: (){}
+                                        onPressed: (){
+                                          Navigator.pushNamed(context, CheckoutScreen.id);
+
+                                        }
 
                                     ),
 
@@ -350,47 +363,63 @@ class cart extends StatelessWidget {
 
 
 
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.purple,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.chat,
-              color: Colors.purple,
-            ),
-            label: 'Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add,
-              color: Colors.purple,
-            ),
-            label: 'add',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_cart,
-              color: Colors.purple,
-            ),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite,
-              color: Colors.purple,
-            ),
-            label: 'Wishlist',
-          ),
-        ],
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.home,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, homescreen2.id);
 
+              },
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.chat,
+                color: Colors.purple,
+              ),
+              onPressed: () {},
+            ),
+            SizedBox(width: 32),
+            IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, cart.id);
+
+              },
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.favorite,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, favouritelist.id);
+
+              },
+            ),
+          ],
+        ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.purpleAccent,
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.pushNamed(context, ProductListing.id);
+
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
     );
   }
 }

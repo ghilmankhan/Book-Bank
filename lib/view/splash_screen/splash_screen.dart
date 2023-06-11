@@ -1,4 +1,4 @@
-import 'dart:async';
+import  'dart:async';
 
 import 'package:book_bank/view/get_start_screen/get_start_screen.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import '../../generated/assets.dart';
 
 class SplashScreen extends StatefulWidget {
+
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
