@@ -42,22 +42,20 @@ class MyApp extends StatelessWidget {
       ),
 
 
-      // home: SplashScreen(), old code
+      home: SplashScreen(),// old code
       //new code
-      initialRoute: homescreen2.id,
-
-      routes: {
-         homescreen2.id: (context)=> homescreen2(),
-         cart.id: (context)=>  cart(),
-         ProductListing.id: (context)=>  ProductListing(),
-         ProductPage2.id: (context)=>  ProductPage2(),
-        DonationScreenSteps.id: (context)=>  DonationScreenSteps(),
-         favouritelist.id: (context)=>  favouritelist(),
-          WishlistScreen.id: (context)=>  WishlistScreen(),
-          CheckoutScreen.id: (context)=>  CheckoutScreen(),
-
-
-      },
+      // initialRoute: homescreen2.id,
+      //
+      // routes: {
+      //    homescreen2.id: (context)=> homescreen2(),
+      //    cart.id: (context)=>  cart(),
+      //    ProductListing.id: (context)=>  ProductListing(),
+      //    ProductPage2.id: (context)=>  ProductPage2(),
+      //   DonationScreenSteps.id: (context)=>  DonationScreenSteps(),
+      //    favouritelist.id: (context)=>  favouritelist(),
+      //     WishlistScreen.id: (context)=>  WishlistScreen(),
+      //     CheckoutScreen.id: (context)=>  CheckoutScreen(),
+      // },
 
 
 
