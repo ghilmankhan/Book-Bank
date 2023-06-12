@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+//ab test kar k bto ok wait
       theme: ThemeData(
         primaryColor: appThemeColor,
         primaryColorDark: appThemeColor,
@@ -46,16 +47,16 @@ class MyApp extends StatelessWidget {
       //new code
       // initialRoute: homescreen2.id,
       //
-      // routes: {
-      //    homescreen2.id: (context)=> homescreen2(),
-      //    cart.id: (context)=>  cart(),
-      //    ProductListing.id: (context)=>  ProductListing(),
-      //    ProductPage2.id: (context)=>  ProductPage2(),
-      //   DonationScreenSteps.id: (context)=>  DonationScreenSteps(),
-      //    favouritelist.id: (context)=>  favouritelist(),
-      //     WishlistScreen.id: (context)=>  WishlistScreen(),
-      //     CheckoutScreen.id: (context)=>  CheckoutScreen(),
-      // },
+      routes: {
+         homescreen2.id: (context)=> homescreen2(),
+         cart.id: (context)=>  cart(),
+         ProductListing.id: (context)=>  ProductListing(),
+         ProductPage2.id: (context)=>  ProductPage2(),
+        DonationScreenSteps.id: (context)=>  DonationScreenSteps(),
+         favouritelist.id: (context)=>  favouritelist(),
+          WishlistScreen.id: (context)=>  WishlistScreen(),
+          CheckoutScreen.id: (context)=>  CheckoutScreen(),
+      },
 
 
 

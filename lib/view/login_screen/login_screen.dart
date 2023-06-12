@@ -110,12 +110,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ElevatedButton(
                         onPressed: () {
 
-                            Auth.login(email: email.text, password: password.text, width: width,setLoading:  (bool value){setState(() {isLoading=value;});
-                            if(!isLoading){
-                                Navigator.pushNamed(context, homescreen2.id);}
-
-
-                            });
+                          // Navigator.pushNamed(context, homescreen2.id);
+                         Get.offAllNamed(homescreen2.id);
+                            // Auth.login(email: email.text, password: password.text, width: width,setLoading:  (bool value){setState(() {isLoading=value;});
+                            // if(!isLoading){
+                            //     Navigator.pushNamed(context, homescreen2.id);}
+                            //
+                            // });
                         },
                         child: const Text("Login Now")),
                     SizedBox(

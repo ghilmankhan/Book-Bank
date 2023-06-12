@@ -97,7 +97,7 @@ class _homescreen2State extends State<homescreen2> {
                           color: Colors.white,
                         ),
                       ),
-                      onPressed: () {
+                      onPressed: () {// ya meri screen ha? nhi
                         Navigator.pushNamed(context, ProductPage2.id);
                       },
                     ),

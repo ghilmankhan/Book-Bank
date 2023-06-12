@@ -12,8 +12,8 @@ class SplashScreen extends StatefulWidget {
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
-}
-
+} // ye hai tumhari screen , wo main screen homescreen wahan route karna hai route laga diya hai likn splash screen say code agaye nahi ja rha hai
+  // get start  per nh ja raha?
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
