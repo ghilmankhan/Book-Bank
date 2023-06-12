@@ -1,18 +1,35 @@
 import 'dart:ui';
 
 import 'package:book_bank/screens/homescreen/ProductPage2.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:book_bank/screens/homescreen/cart.dart';
 import 'package:book_bank/screens/homescreen/favouritelist.dart';
 import 'package:book_bank/screens/homescreen/homescreen2.dart';
 import 'ProductListing.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 
 class Product {
-  final String name;
-  final double price;
+  String? name,
+  String? state;
+  String? isbn;
+  String? author;
+  String? publisher;
+  double? price;
+  String? category;
+  String? image;
 
-  Product({required this.name, required this.price});
+  Product({
+    this.name,
+    this.state,
+    this.isbn,
+    this.author,
+    this.publisher,
+    this.category,
+    this.image,
+    this.price,
+  });
 }
 
 class Body extends StatelessWidget {
@@ -50,7 +67,8 @@ class Body extends StatelessWidget {
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // Add vertical padding
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 30, vertical: 15), // Add vertical padding
               child: Dismissible(
                 key: UniqueKey(),
                 background: Container(
@@ -60,7 +78,8 @@ class Body extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                     child: Row(
                       children: [
                         Spacer(),
@@ -97,7 +116,10 @@ class Body extends StatelessWidget {
                             child: Container(
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
-                                  colors: [Color(0xFFff0066), Color(0xFFffccff),],
+                                  colors: [
+                                    Color(0xFFff0066),
+                                    Color(0xFFffccff),
+                                  ],
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
                                 ),
@@ -162,19 +184,21 @@ class Body extends StatelessWidget {
                                 ),
                                 maxLines: 2,
                               ),
-
                               Spacer(),
                               Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   ElevatedButton(
                                     onPressed: () {
                                       Navigator.pushNamed(context, cart.id);
-                                      ScaffoldMessenger.of(context).showSnackBar(
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
                                         SnackBar(
                                           content: Text(
                                             'Added to cart!',
-                                            style: TextStyle(color: Colors.white),
+                                            style:
+                                                TextStyle(color: Colors.white),
                                           ),
                                           backgroundColor: Colors.green,
                                           duration: Duration(milliseconds: 500),
@@ -182,22 +206,27 @@ class Body extends StatelessWidget {
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
-
                                       primary: Color(0xFFcc00cc),
                                     ),
                                     child: Text(
                                       "Add to Cart",
-                                      style: TextStyle(fontSize: 11,fontWeight: FontWeight.bold,),
+                                      style: TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                   ElevatedButton(
                                     onPressed: () {
-                                      Navigator.pushNamed(context, ProductPage2.id);
-                                      ScaffoldMessenger.of(context).showSnackBar(
+                                      Navigator.pushNamed(
+                                          context, ProductPage2.id);
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
                                         SnackBar(
                                           content: Text(
                                             'View details',
-                                            style: TextStyle(color: Colors.white),
+                                            style:
+                                                TextStyle(color: Colors.white),
                                           ),
                                           backgroundColor: Colors.green,
                                           duration: Duration(milliseconds: 500),
@@ -230,14 +259,8 @@ class Body extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
 class WishlistScreen extends StatefulWidget {
-  static const String id= 'WishlistScreen';
+  static const String id = 'WishlistScreen';
   @override
   _WishlistScreenState createState() => _WishlistScreenState();
 }
@@ -249,17 +272,16 @@ class _WishlistScreenState extends State<WishlistScreen> {
     Product(name: "Product 3", price: 30.0),
   ];
   Object? _institutionType;
-  Object? selectedValue ;
+  Object? selectedValue;
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.purpleAccent.withOpacity(0.25),
-        automaticallyImplyLeading: false, // add this property and set it to false
+        automaticallyImplyLeading:
+            false, // add this property and set it to false
         leading: Material(
           color: Colors.transparent,
           child: InkWell(
@@ -268,12 +290,14 @@ class _WishlistScreenState extends State<WishlistScreen> {
             },
             splashColor: Colors.white,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 0.5),
-              child:
-              IconButton(
-                icon: Icon(Icons.arrow_back_ios_new_outlined,
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 0.5),
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_new_outlined,
                   color: Colors.purple,
-                  size: 30,),
+                  size: 30,
+                ),
                 onPressed: () => Navigator.of(context).pop(),
                 style: ElevatedButton.styleFrom(
                   elevation: 5,
@@ -287,7 +311,8 @@ class _WishlistScreenState extends State<WishlistScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 3),
-              child: Text('Wish List',
+              child: Text(
+                'Wish List',
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
@@ -320,10 +345,8 @@ class _WishlistScreenState extends State<WishlistScreen> {
           ),
         ],
       ),
-
-
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
@@ -352,7 +375,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                         Column(children: [
                           Text.rich(TextSpan(
                             text:
-                            "Note:                                                                 ",
+                                "Note:                                                                 ",
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.yellowAccent,
@@ -360,7 +383,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                           )),
                           Text.rich(TextSpan(
                             text:
-                            "To remove any product, just swipe right or left!",
+                                "To remove any product, just swipe right or left!",
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
@@ -430,12 +453,14 @@ class _WishlistScreenState extends State<WishlistScreen> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => wishlistregistration()),
+                            MaterialPageRoute(
+                                builder: (context) => wishlistregistration()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
                           primary: Colors.purple[200],
-                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -451,17 +476,13 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   ),
                 ),
               ),
-
               SizedBox(height: 30.0),
               Body(),
               SizedBox(height: 30.0),
-
             ],
           ),
         ),
       ),
-
-
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         shape: CircularNotchedRectangle(),
@@ -506,9 +527,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
         onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
-
-
     );
   }
 }
@@ -517,8 +535,10 @@ class NewScreen extends StatefulWidget {
   @override
   _NewScreenState createState() => _NewScreenState();
 }
+
 class _NewScreenState extends State<NewScreen> {
   Object? _institutionType;
+  Product newProduct = Product();
   @override
   Widget build(BuildContext context) {
     String selectedValue = '';
@@ -526,7 +546,8 @@ class _NewScreenState extends State<NewScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.purpleAccent.withOpacity(0.25),
-        automaticallyImplyLeading: false, // add this property and set it to false
+        automaticallyImplyLeading:
+            false, // add this property and set it to false
         leading: Material(
           color: Colors.transparent,
           child: InkWell(
@@ -535,12 +556,14 @@ class _NewScreenState extends State<NewScreen> {
             },
             splashColor: Colors.white,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 0.5),
-              child:
-              IconButton(
-                icon: Icon(Icons.arrow_back_ios_new_outlined,
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 0.5),
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_new_outlined,
                   color: Colors.purple,
-                  size: 30,),
+                  size: 30,
+                ),
                 onPressed: () => Navigator.of(context).pop(),
                 style: ElevatedButton.styleFrom(
                   elevation: 5,
@@ -592,7 +615,6 @@ class _NewScreenState extends State<NewScreen> {
               // Handle add to cart button press
             },
           ),
-
         ],
       ),
       body: SingleChildScrollView(
@@ -661,7 +683,7 @@ class _NewScreenState extends State<NewScreen> {
                       Column(children: [
                         Text.rich(TextSpan(
                           text:
-                          "Note:                                                                 ",
+                              "Note:                                                                 ",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.purple,
@@ -669,7 +691,7 @@ class _NewScreenState extends State<NewScreen> {
                         )),
                         Text.rich(TextSpan(
                           text:
-                          "Please read and accept the terms and conditions",
+                              "Please read and accept the terms and conditions",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.red,
@@ -680,10 +702,7 @@ class _NewScreenState extends State<NewScreen> {
                   ),
                 ),
               ),
-
-
               SizedBox(height: 30.0),
-
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -712,7 +731,6 @@ class _NewScreenState extends State<NewScreen> {
                     SizedBox(height: 10),
                     // 4. Create three RadioListTile widgets for each option
                     //    and wrap them in a Column
-
                   ],
                 ),
               ),
@@ -745,7 +763,11 @@ class _NewScreenState extends State<NewScreen> {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Enter book name/title",
+
                       ),
+                      onChanged: (val) {
+                        newProduct.name = val;
+                      }
                     ),
                     SizedBox(height: 10),
                     Text(
@@ -791,6 +813,10 @@ class _NewScreenState extends State<NewScreen> {
                         border: OutlineInputBorder(),
                         hintText: "Enter book publisher",
                       ),
+
+                        onChanged: (val) {
+                          newProduct.publisher = val;
+                        }
                     ),
                     SizedBox(height: 10),
                     Text(
@@ -806,15 +832,15 @@ class _NewScreenState extends State<NewScreen> {
                         border: OutlineInputBorder(),
                         hintText: "Enter book price",
                       ),
+                        onChanged: (val) {
+                          newProduct.price = double.tryParse(val);
+                        }
                     ),
                     SizedBox(height: 10),
-
                     SizedBox(height: 10),
-
                   ],
                 ),
               ),
-
               SizedBox(height: 36),
               Container(
                 padding: EdgeInsets.all(16),
@@ -855,53 +881,101 @@ class _NewScreenState extends State<NewScreen> {
                     ),
                     SizedBox(height: 10),
                     DropdownButtonFormField(
+
+                      onChanged: (val) {
+                        newProduct.category = val;
+                      }
                       items: [
                         DropdownMenuItem(
-                          child: Text("Historical Fiction",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Historical Fiction",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Historical Fiction",
                         ),
                         DropdownMenuItem(
-                          child: Text("Non-fiction",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Non-fiction",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Non-fiction",
                         ),
                         DropdownMenuItem(
-                          child: Text("Fiction",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Fiction",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Fiction",
                         ),
                         DropdownMenuItem(
-                          child: Text("Romance novel",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Romance novel",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Romance novel",
                         ),
                         DropdownMenuItem(
-                          child: Text("Children's literature",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Children's literature",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Children's literature",
                         ),
                         DropdownMenuItem(
-                          child: Text("Horror",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Horror",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Horror",
                         ),
                         DropdownMenuItem(
-                          child: Text("Biography",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Biography",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Biography",
                         ),
                         DropdownMenuItem(
-                          child: Text("Memoir",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Memoir",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Memoir",
                         ),
                         DropdownMenuItem(
-                          child: Text("Science fiction",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Science fiction",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Science fiction",
                         ),
-
                       ],
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -938,9 +1012,7 @@ class _NewScreenState extends State<NewScreen> {
                 ),
               ),
               SizedBox(height: 16),
-
               SizedBox(height: 16.0),
-
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -965,7 +1037,6 @@ class _NewScreenState extends State<NewScreen> {
                         color: Colors.purple,
                       ),
                     ),
-
                     SizedBox(height: 20),
                     Row(
                       children: [
@@ -1027,9 +1098,8 @@ class _NewScreenState extends State<NewScreen> {
                       _institutionType == "school"
                           ? "Book school name"
                           : _institutionType == "college"
-                          ? "Book college name"
-
-                          : "Book university name",
+                              ? "Book college name"
+                              : "Book university name",
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.grey[800],
@@ -1070,14 +1140,7 @@ class _NewScreenState extends State<NewScreen> {
                   ],
                 ),
               ),
-
-
-
-
-
-
               SizedBox(height: 40),
-
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -1119,56 +1182,105 @@ class _NewScreenState extends State<NewScreen> {
                     DropdownButtonFormField(
                       items: [
                         DropdownMenuItem(
-                          child: Text("Spanish",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Spanish",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Spanish",
                         ),
                         DropdownMenuItem(
-                          child: Text("English",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "English",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "English",
                         ),
                         DropdownMenuItem(
-                          child: Text("Arabic",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Arabic",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Arabic",
                         ),
                         DropdownMenuItem(
-                          child: Text("French",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "French",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "French",
                         ),
                         DropdownMenuItem(
-                          child: Text("Russian",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Russian",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Russian",
                         ),
                         DropdownMenuItem(
-                          child: Text("Portuguese",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Portuguese",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Portuguese",
                         ),
                         DropdownMenuItem(
-                          child: Text("Chinese",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Chinese",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Chinese",
                         ),
                         DropdownMenuItem(
-                          child: Text("German",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "German",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "German",
                         ),
                         DropdownMenuItem(
-                          child: Text("Hindi",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Hindi",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Hindi",
                         ),
                         DropdownMenuItem(
-                          child: Text("Urdu",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Urdu",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Urdu",
                         ),
-
                       ],
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -1202,14 +1314,9 @@ class _NewScreenState extends State<NewScreen> {
                       onChanged: (value) {},
                     ),
                   ],
-
-
                 ),
-
               ),
-
               SizedBox(height: 20),
-
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -1251,27 +1358,45 @@ class _NewScreenState extends State<NewScreen> {
                     DropdownButtonFormField(
                       items: [
                         DropdownMenuItem(
-                          child: Text("As New",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "As New",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "As New",
                         ),
                         DropdownMenuItem(
-                          child: Text("Good",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Good",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Good",
                         ),
                         DropdownMenuItem(
-                          child: Text("Fine",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Fine",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Fine",
                         ),
                         DropdownMenuItem(
-                          child: Text("Fair",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Fair",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Fair",
                         ),
-
-
                       ],
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -1305,14 +1430,9 @@ class _NewScreenState extends State<NewScreen> {
                       onChanged: (value) {},
                     ),
                   ],
-
-
                 ),
-
               ),
-
               SizedBox(height: 40),
-
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -1404,15 +1524,9 @@ class _NewScreenState extends State<NewScreen> {
                       ),
                     ),
                     SizedBox(height: 10),
-
-
-
                   ],
                 ),
               ),
-
-
-
               SizedBox(height: 20),
               SizedBox(height: 20),
               SizedBox(height: 20),
@@ -1429,15 +1543,16 @@ class _NewScreenState extends State<NewScreen> {
                     ),
                   ],
                 ),
-
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Location",
+                    Text(
+                      "Location",
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          color: Colors.purple),),
+                          color: Colors.purple),
+                    ),
                     SizedBox(height: 15),
                     Container(
                       decoration: BoxDecoration(
@@ -1462,7 +1577,6 @@ class _NewScreenState extends State<NewScreen> {
                     SizedBox(height: 15),
                     TextField(
                       decoration: InputDecoration(
-
                         border: OutlineInputBorder(),
                         hintText: "Robert Robertson, 1234 NW "
                             "Bobcat Lane, St. Robert, MO 65584-5678",
@@ -1477,11 +1591,13 @@ class _NewScreenState extends State<NewScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Upload Up to 3 Photos",
+                    Text(
+                      "Upload Up to 3 Photos",
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.purple),),
+                          color: Colors.purple),
+                    ),
                     SizedBox(height: 15),
                     SizedBox(height: 10),
                     Container(
@@ -1502,16 +1618,12 @@ class _NewScreenState extends State<NewScreen> {
                       ),
                     ),
                     SizedBox(height: 30),
-
-
-
                     ElevatedButton.icon(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 30),
                             backgroundColor: Colors.purple,
-
                             shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.zero)),
                         icon: const Icon(
@@ -1522,20 +1634,11 @@ class _NewScreenState extends State<NewScreen> {
                           'Upload',
                           style: TextStyle(color: Colors.white),
                         )),
-
                     SizedBox(height: 40),
-
-
-
-
-
-
                   ],
                 ),
               ),
-
               SizedBox(height: 20),
-
               Container(
                 padding: EdgeInsets.all(10),
                 child: Column(
@@ -1552,7 +1655,6 @@ class _NewScreenState extends State<NewScreen> {
                     SizedBox(height: 10),
                     Container(
                       padding: EdgeInsets.all(10),
-
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -1570,13 +1672,9 @@ class _NewScreenState extends State<NewScreen> {
                         ),
                       ),
                     ),
-
-
                   ],
                 ),
               ),
-
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -1586,7 +1684,6 @@ class _NewScreenState extends State<NewScreen> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 2),
                           backgroundColor: Colors.purple,
-
                           shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.zero)),
                       icon: const Icon(
@@ -1597,15 +1694,23 @@ class _NewScreenState extends State<NewScreen> {
                         'View product listing',
                         style: TextStyle(color: Colors.white),
                       )),
-
-
                   ElevatedButton.icon(
-                      onPressed: null,
+                      onPressed: () async {
+                        await FirebaseFirestore.instance.collection('wishlist').add({
+                          'name': newProduct.name,
+                          'state': newProduct.state,
+                          'isbn': newProduct.isbn,
+                          'category': newProduct.category,
+                          'author': newProduct.author,
+                          'publisher': newProduct.publisher,
+                          'price': newProduct.price
+                        });
+                        Get.showSnackbar(Get.snackbar('Success', 'Wishlist added successfully!').snackbar);
+                      },
                       style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 10),
                           backgroundColor: Colors.purple,
-
                           shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.zero)),
                       icon: const Icon(
@@ -1616,15 +1721,11 @@ class _NewScreenState extends State<NewScreen> {
                         'Compeleted',
                         style: TextStyle(color: Colors.white),
                       )),
-
-
-
                 ],
               ),
             ],
           ),
         ),
-
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
@@ -1642,7 +1743,6 @@ class _NewScreenState extends State<NewScreen> {
             ),
             label: 'Chat',
           ),
-
           BottomNavigationBarItem(
             icon: Icon(
               Icons.add,
@@ -1650,7 +1750,6 @@ class _NewScreenState extends State<NewScreen> {
             ),
             label: 'add',
           ),
-
           BottomNavigationBarItem(
             icon: Icon(
               Icons.shopping_cart,
@@ -1671,6 +1770,7 @@ class _NewScreenState extends State<NewScreen> {
     );
   }
 }
+
 class wishlistregistration extends StatefulWidget {
   @override
   _wishlistregistrationState createState() => _wishlistregistrationState();
@@ -1678,7 +1778,7 @@ class wishlistregistration extends StatefulWidget {
 
 class _wishlistregistrationState extends State<wishlistregistration> {
   Object? _institutionType;
-  Object? selectedValue ;
+  Object? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -1686,7 +1786,8 @@ class _wishlistregistrationState extends State<wishlistregistration> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.purpleAccent.withOpacity(0.25),
-        automaticallyImplyLeading: false, // add this property and set it to false
+        automaticallyImplyLeading:
+            false, // add this property and set it to false
         leading: Material(
           color: Colors.transparent,
           child: InkWell(
@@ -1695,12 +1796,14 @@ class _wishlistregistrationState extends State<wishlistregistration> {
             },
             splashColor: Colors.white,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 0.5),
-              child:
-              IconButton(
-                icon: Icon(Icons.arrow_back_ios_new_outlined,
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 0.5),
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_new_outlined,
                   color: Colors.purple,
-                  size: 30,),
+                  size: 30,
+                ),
                 onPressed: () => Navigator.of(context).pop(),
                 style: ElevatedButton.styleFrom(
                   elevation: 5,
@@ -1752,7 +1855,6 @@ class _wishlistregistrationState extends State<wishlistregistration> {
               // Handle add to cart button press
             },
           ),
-
         ],
       ),
       body: SingleChildScrollView(
@@ -1801,7 +1903,6 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                   ),
                 ),
               ),
-
               SizedBox(height: 40.0),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -1824,7 +1925,7 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                       Column(children: [
                         Text.rich(TextSpan(
                           text:
-                          "Note:                                                                 ",
+                              "Note:                                                                 ",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.purple,
@@ -1832,7 +1933,7 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                         )),
                         Text.rich(TextSpan(
                           text:
-                          "Please read and accept the terms and conditions",
+                              "Please read and accept the terms and conditions",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.red,
@@ -1845,8 +1946,6 @@ class _wishlistregistrationState extends State<wishlistregistration> {
               ),
               SizedBox(height: 30.0),
               SizedBox(height: 25),
-
-
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -1876,7 +1975,6 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                         color: Colors.white,
                       ),
                     ),
-
                     SizedBox(height: 20),
                     Row(
                       children: [
@@ -1924,10 +2022,11 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                             if (selectedValue = value != null) {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => NewScreen()),
+                                MaterialPageRoute(
+                                    builder: (context) => NewScreen()),
                               );
-                            };
-
+                            }
+                            ;
                           },
                         ),
                         Text(
@@ -1938,20 +2037,13 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                             color: Colors.white,
                           ),
                         ),
-
                       ],
                     ),
-
-
                     SizedBox(height: 10),
-
                   ],
                 ),
               ),
-
               SizedBox(height: 30),
-
-
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -2043,9 +2135,7 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                       ),
                     ),
                     SizedBox(height: 10),
-
                     SizedBox(height: 10),
-
                   ],
                 ),
               ),
@@ -2091,51 +2181,95 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                     DropdownButtonFormField(
                       items: [
                         DropdownMenuItem(
-                          child: Text("Historical Fiction",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Historical Fiction",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Historical Fiction",
                         ),
                         DropdownMenuItem(
-                          child: Text("Non-fiction",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Non-fiction",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Non-fiction",
                         ),
                         DropdownMenuItem(
-                          child: Text("Fiction",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Fiction",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Fiction",
                         ),
                         DropdownMenuItem(
-                          child: Text("Romance novel",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Romance novel",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Romance novel",
                         ),
                         DropdownMenuItem(
-                          child: Text("Children's literature",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Children's literature",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Children's literature",
                         ),
                         DropdownMenuItem(
-                          child: Text("Horror",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Horror",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Horror",
                         ),
                         DropdownMenuItem(
-                          child: Text("Biography",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Biography",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Biography",
                         ),
                         DropdownMenuItem(
-                          child: Text("Memoir",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Memoir",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Memoir",
                         ),
                         DropdownMenuItem(
-                          child: Text("Science fiction",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Science fiction",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Science fiction",
                         ),
-
                       ],
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -2172,9 +2306,7 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                 ),
               ),
               SizedBox(height: 16),
-
               SizedBox(height: 16.0),
-
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -2199,7 +2331,6 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                         color: Colors.purple,
                       ),
                     ),
-
                     SizedBox(height: 20),
                     Row(
                       children: [
@@ -2256,16 +2387,13 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                         ),
                       ],
                     ),
-
-
                     SizedBox(height: 20),
                     Text(
                       _institutionType == "school"
                           ? "Book school name"
                           : _institutionType == "college"
-                          ? "Book college name"
-
-                          : "Book university name",
+                              ? "Book college name"
+                              : "Book university name",
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.grey[800],
@@ -2306,14 +2434,7 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                   ],
                 ),
               ),
-
-
-
-
-
-
               SizedBox(height: 40),
-
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -2355,56 +2476,105 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                     DropdownButtonFormField(
                       items: [
                         DropdownMenuItem(
-                          child: Text("Spanish",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Spanish",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Spanish",
                         ),
                         DropdownMenuItem(
-                          child: Text("English",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "English",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "English",
                         ),
                         DropdownMenuItem(
-                          child: Text("Arabic",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Arabic",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Arabic",
                         ),
                         DropdownMenuItem(
-                          child: Text("French",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "French",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "French",
                         ),
                         DropdownMenuItem(
-                          child: Text("Russian",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Russian",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Russian",
                         ),
                         DropdownMenuItem(
-                          child: Text("Portuguese",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Portuguese",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Portuguese",
                         ),
                         DropdownMenuItem(
-                          child: Text("Chinese",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Chinese",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Chinese",
                         ),
                         DropdownMenuItem(
-                          child: Text("German",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "German",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "German",
                         ),
                         DropdownMenuItem(
-                          child: Text("Hindi",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Hindi",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Hindi",
                         ),
                         DropdownMenuItem(
-                          child: Text("Urdu",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Urdu",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Urdu",
                         ),
-
                       ],
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -2438,14 +2608,9 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                       onChanged: (value) {},
                     ),
                   ],
-
-
                 ),
-
               ),
-
               SizedBox(height: 20),
-
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -2487,27 +2652,45 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                     DropdownButtonFormField(
                       items: [
                         DropdownMenuItem(
-                          child: Text("As New",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "As New",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "As New",
                         ),
                         DropdownMenuItem(
-                          child: Text("Good",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Good",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Good",
                         ),
                         DropdownMenuItem(
-                          child: Text("Fine",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Fine",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Fine",
                         ),
                         DropdownMenuItem(
-                          child: Text("Fair",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          child: Text(
+                            "Fair",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
                           value: "Fair",
                         ),
-
-
                       ],
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -2541,14 +2724,9 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                       onChanged: (value) {},
                     ),
                   ],
-
-
                 ),
-
               ),
-
               SizedBox(height: 40),
-
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -2640,15 +2818,9 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                       ),
                     ),
                     SizedBox(height: 10),
-
-
-
                   ],
                 ),
               ),
-
-
-
               SizedBox(height: 20),
               SizedBox(height: 20),
               SizedBox(height: 20),
@@ -2665,15 +2837,16 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                     ),
                   ],
                 ),
-
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Location",
+                    Text(
+                      "Location",
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          color: Colors.purple),),
+                          color: Colors.purple),
+                    ),
                     SizedBox(height: 15),
                     Container(
                       decoration: BoxDecoration(
@@ -2698,7 +2871,6 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                     SizedBox(height: 15),
                     TextField(
                       decoration: InputDecoration(
-
                         border: OutlineInputBorder(),
                         hintText: "Robert Robertson, 1234 NW "
                             "Bobcat Lane, St. Robert, MO 65584-5678",
@@ -2713,11 +2885,13 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Upload Up to 3 Photos",
+                    Text(
+                      "Upload Up to 3 Photos",
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.purple),),
+                          color: Colors.purple),
+                    ),
                     SizedBox(height: 15),
                     SizedBox(height: 10),
                     Container(
@@ -2738,16 +2912,12 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                       ),
                     ),
                     SizedBox(height: 30),
-
-
-
                     ElevatedButton.icon(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 30),
                             backgroundColor: Colors.purple,
-
                             shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.zero)),
                         icon: const Icon(
@@ -2758,20 +2928,11 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                           'Upload',
                           style: TextStyle(color: Colors.white),
                         )),
-
                     SizedBox(height: 40),
-
-
-
-
-
-
                   ],
                 ),
               ),
-
               SizedBox(height: 20),
-
               Container(
                 padding: EdgeInsets.all(10),
                 child: Column(
@@ -2788,7 +2949,6 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                     SizedBox(height: 10),
                     Container(
                       padding: EdgeInsets.all(10),
-
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -2806,26 +2966,20 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                         ),
                       ),
                     ),
-
-
                   ],
                 ),
               ),
-
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton.icon(
                       onPressed: () {
                         Navigator.pushNamed(context, ProductListing.id);
-
                       },
                       style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 2),
                           backgroundColor: Colors.purple,
-
                           shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.zero)),
                       icon: const Icon(
@@ -2836,15 +2990,12 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                         'View product listing',
                         style: TextStyle(color: Colors.white),
                       )),
-
-
                   ElevatedButton.icon(
                       onPressed: null,
                       style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 10),
                           backgroundColor: Colors.purple,
-
                           shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.zero)),
                       icon: const Icon(
@@ -2855,15 +3006,11 @@ class _wishlistregistrationState extends State<wishlistregistration> {
                         'Compeleted',
                         style: TextStyle(color: Colors.white),
                       )),
-
-
-
                 ],
               ),
             ],
           ),
         ),
-
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
@@ -2878,7 +3025,6 @@ class _wishlistregistrationState extends State<wishlistregistration> {
               ),
               onPressed: () {
                 Navigator.pushNamed(context, homescreen2.id);
-
               },
             ),
             IconButton(
@@ -2896,7 +3042,6 @@ class _wishlistregistrationState extends State<wishlistregistration> {
               ),
               onPressed: () {
                 Navigator.pushNamed(context, cart.id);
-
               },
             ),
             IconButton(
@@ -2906,7 +3051,6 @@ class _wishlistregistrationState extends State<wishlistregistration> {
               ),
               onPressed: () {
                 Navigator.pushNamed(context, favouritelist.id);
-
               },
             ),
           ],
@@ -2917,7 +3061,6 @@ class _wishlistregistrationState extends State<wishlistregistration> {
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.pushNamed(context, ProductListing.id);
-
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
