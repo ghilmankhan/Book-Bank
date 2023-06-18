@@ -14,8 +14,11 @@ import 'package:flutter/material.dart';
 
 import '../../components/widgets/btextfield.dart';
 import '../../components/widgets/loading_indicator.dart';
+import '../../screens/homescreen/ForgotPasswordScreen.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const String id = 'LoginScreen';
+
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -111,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {
 
                           // Navigator.pushNamed(context, homescreen2.id);
-                         Get.offAllNamed(homescreen2.id);
+                         Get.offAllNamed(ForgotPasswordScreen.id);
                             // Auth.login(email: email.text, password: password.text, width: width,setLoading:  (bool value){setState(() {isLoading=value;});
                             // if(!isLoading){
                             //     Navigator.pushNamed(context, homescreen2.id);}

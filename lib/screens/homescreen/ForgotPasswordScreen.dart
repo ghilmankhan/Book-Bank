@@ -1,6 +1,11 @@
+import 'package:book_bank/view/login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
+  static const String id = 'ForgotPasswordScreen';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -338,7 +343,9 @@ class ResetPasswordScreen extends StatelessWidget {
             ),
             SizedBox(height: 32.0),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.offAllNamed(LoginScreen.id);
+              },
               child: Container(
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(vertical: 16.0),
