@@ -3,7 +3,8 @@ import 'package:book_bank/screens/homescreen/cart.dart';
 import 'package:book_bank/screens/homescreen/ProductListing.dart';
 import 'package:book_bank/screens/homescreen/DonationScreenSteps.dart';
 import 'package:book_bank/screens/homescreen/favouritelist.dart';
-
+import 'package:book_bank/screens/homescreen/drawer/drawerSettings.dart';
+import 'package:book_bank/screens/homescreen/drawer/dashboard.dart';
 
 import 'ProductPage2.dart';
 import 'WishlistScreen.dart';
@@ -338,7 +339,6 @@ class _homescreen2State extends State<homescreen2> {
       appBar: AppBar(
         title: Text('Home'),
         actions: [
-
           IconButton(
             icon: Icon(Icons.notifications),
             onPressed: () {
@@ -418,14 +418,17 @@ class _homescreen2State extends State<homescreen2> {
             ListTile(
               leading: Icon(Icons.settings, color: Colors.purple),
               title: Text(
-                'Settings',
+                'Settings', // drawerSettings
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,
                   color: Colors.purpleAccent,
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, drawerSettings.id);
+
+              },
             ),
             ListTile(
               leading: Icon(Icons.dashboard, color: Colors.purple),
@@ -437,7 +440,10 @@ class _homescreen2State extends State<homescreen2> {
                   color: Colors.purpleAccent,
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, dashboard.id);
+
+              },
             ),
             ListTile(
               leading: Icon(Icons.history, color: Colors.purple),
@@ -498,7 +504,7 @@ class _homescreen2State extends State<homescreen2> {
                 ),
               ),
               onTap: () {
-                Navigator.pushNamed(context, WishlistScreen.id);
+               // Navigator.pushNamed(context, WishlistScreen.id);
               },
             ),
             ListTile(

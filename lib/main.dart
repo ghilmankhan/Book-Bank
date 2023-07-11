@@ -3,13 +3,18 @@ import 'package:book_bank/generated/assets.dart';
 import 'package:book_bank/screens/homescreen/ChatScreen.dart';
 import 'package:book_bank/screens/homescreen/CheckoutScreen.dart';
 import 'package:book_bank/screens/homescreen/DonationScreenSteps.dart';
+import 'package:book_bank/screens/homescreen/ForgotPasswordScreen.dart';
 import 'package:book_bank/screens/homescreen/MessageListScreen.dart';
 import 'package:book_bank/screens/homescreen/ProductListing.dart';
 import 'package:book_bank/screens/homescreen/ProductPage2.dart';
 import 'package:book_bank/screens/homescreen/WishlistScreen.dart';
+import 'package:book_bank/screens/homescreen/drawer/Customers.dart';
+import 'package:book_bank/screens/homescreen/drawer/dashboard.dart';
+import 'package:book_bank/screens/homescreen/drawer/drawerSettings.dart';
 import 'package:book_bank/screens/homescreen/favouritelist.dart';
 import 'package:book_bank/screens/homescreen/homescreen2.dart';
 import 'package:book_bank/view/get_start_screen/get_start_screen.dart';
+import 'package:book_bank/view/login_screen/login_screen.dart';
 import 'package:book_bank/view/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +39,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      onGenerateRoute: (settings) {
+        if (settings.name == ForgotPasswordScreen.id) {
+          return MaterialPageRoute(
+            builder: (context) => ForgotPasswordScreen(),
+          );
+        }
+        return null; // Handle other routes here if needed
+      },
+
+
 //ab test kar k bto ok wait
       theme: ThemeData(
         primaryColor: appThemeColor,
@@ -56,7 +71,7 @@ class MyApp extends StatelessWidget {
          ProductPage2.id: (context)=>  ProductPage2(),
         DonationScreenSteps.id: (context)=>  DonationScreenSteps(),
          favouritelist.id: (context)=>  favouritelist(),
-          WishlistScreen.id: (context)=>  WishlistScreen(),
+        //  WishlistScreen.id: (context)=>  WishlistScreen(),
           CheckoutScreen.id: (context)=>  CheckoutScreen(),
         //LoginScreen
         MessageListScreen.id: (context) => MessageListScreen(),
@@ -66,6 +81,19 @@ class MyApp extends StatelessWidget {
         SettingsScreen.id: (context) => SettingsScreen(),
         MessageRequestsScreen.id: (context) => MessageRequestsScreen(),
         ArchivedChatsScreen.id: (context) => ArchivedChatsScreen(),
+        ForgotPasswordScreen.id: (context) => ForgotPasswordScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
+        //SettingsScreen
+        drawerSettings.id: (context) => drawerSettings(),
+        //dashboard
+        dashboard.id: (context) => dashboard(),
+
+
+
+
+        Customers.id: (context) => Customers(),
+
+
 
       },
 
