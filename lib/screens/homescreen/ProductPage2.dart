@@ -1,7 +1,10 @@
+import 'package:book_bank/screens/homescreen/MessageListScreen.dart';
+import 'package:book_bank/screens/homescreen/drawer/Customers.dart';
 import 'package:flutter/material.dart';
 
 import 'CommentBox.dart';
 import 'package:book_bank/screens/homescreen/cart.dart';
+import 'package:book_bank/screens/homescreen/favouritelist.dart';
 
 
 class ProductPage2 extends StatefulWidget {
@@ -90,10 +93,12 @@ class _ProductPageState extends State<ProductPage2> {
         backgroundColor: Colors.white.withOpacity(0.25),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.chat),
-            tooltip: 'chat Icon',
+            icon: const Icon(Icons.favorite_border),
+            tooltip: 'favourite',
             color: Colors.purple,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, favouritelist.id);
+            },
           ), //IconButton
           IconButton(
             icon: const Icon(Icons.add_shopping_cart),
@@ -293,71 +298,81 @@ class _ProductPageState extends State<ProductPage2> {
               ),
             ),
 
-            Container(
-              padding: EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      shape: BoxShape.circle,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, CustomerDetailsScreen.id);
+
+              },
+              child: Container(
+                padding: EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        shape: BoxShape.circle,
+                      ),
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(imageUrl),
+                      ),
                     ),
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(imageUrl),
-                    ),
-                  ),
-                  SizedBox(width: 16.0),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          name,
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
+                    SizedBox(width: 16.0),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            name,
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 8.0),
-                        Text(
-                          location,
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.grey[600],
+                          SizedBox(height: 8.0),
+                          Text(
+                            location,
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey[600],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 16.0),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.yellow[700],
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 8.0, vertical: 4.0),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: Colors.white,
-                          size: 16.0,
-                        ),
-                        SizedBox(width: 4.0),
-                        Text(
-                          rating.toString(),
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                    SizedBox(width: 16.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.yellow[700],
+                        borderRadius: BorderRadius.circular(4.0),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 4.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.star,
+                                color: Colors.white,
+                                size: 16.0,
+                              ),
+                              SizedBox(width: 4.0),
+                              Text(
+                                rating.toString(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
 
@@ -396,16 +411,8 @@ class _ProductPageState extends State<ProductPage2> {
                   onPressed: () {
 
                     // Implement chat functionality
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          'Chat functionality is not implemented yet.',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        backgroundColor: Colors.red,
-                        duration: Duration(milliseconds: 500),
-                      ),
-                    );
+                    Navigator.pushNamed(context, MessageListScreen.id);
+
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.purpleAccent,

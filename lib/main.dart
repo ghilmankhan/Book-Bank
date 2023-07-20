@@ -2,6 +2,7 @@ import 'package:book_bank/components/constant/constant.dart';
 import 'package:book_bank/generated/assets.dart';
 import 'package:book_bank/screens/homescreen/ChatScreen.dart';
 import 'package:book_bank/screens/homescreen/CheckoutScreen.dart';
+import 'package:book_bank/screens/homescreen/Contactus.dart';
 import 'package:book_bank/screens/homescreen/DonationScreenSteps.dart';
 import 'package:book_bank/screens/homescreen/ForgotPasswordScreen.dart';
 import 'package:book_bank/screens/homescreen/MessageListScreen.dart';
@@ -9,6 +10,8 @@ import 'package:book_bank/screens/homescreen/ProductListing.dart';
 import 'package:book_bank/screens/homescreen/ProductPage2.dart';
 import 'package:book_bank/screens/homescreen/WishlistScreen.dart';
 import 'package:book_bank/screens/homescreen/drawer/Customers.dart';
+import 'package:book_bank/screens/homescreen/drawer/ProductScreen.dart';
+import 'package:book_bank/screens/homescreen/drawer/PurchaseHistoryScreen.dart';
 import 'package:book_bank/screens/homescreen/drawer/dashboard.dart';
 import 'package:book_bank/screens/homescreen/drawer/drawerSettings.dart';
 import 'package:book_bank/screens/homescreen/favouritelist.dart';
@@ -71,13 +74,13 @@ class MyApp extends StatelessWidget {
          ProductPage2.id: (context)=>  ProductPage2(),
         DonationScreenSteps.id: (context)=>  DonationScreenSteps(),
          favouritelist.id: (context)=>  favouritelist(),
-        //  WishlistScreen.id: (context)=>  WishlistScreen(),
+          WishlistScreen.id: (context)=>  WishlistScreen(),
           CheckoutScreen.id: (context)=>  CheckoutScreen(),
         //LoginScreen
         MessageListScreen.id: (context) => MessageListScreen(),
         ChatScreen.id: (context) => ChatScreen(),
         SearchScreen.id: (context) => SearchScreen(),
-        PersonDetailsScreen.id: (context) => PersonDetailsScreen(),
+
         SettingsScreen.id: (context) => SettingsScreen(),
         MessageRequestsScreen.id: (context) => MessageRequestsScreen(),
         ArchivedChatsScreen.id: (context) => ArchivedChatsScreen(),
@@ -87,11 +90,15 @@ class MyApp extends StatelessWidget {
         drawerSettings.id: (context) => drawerSettings(),
         //dashboard
         dashboard.id: (context) => dashboard(),
+        CustomerDetailsScreen.id: (context) => CustomerDetailsScreen(customerName: '', orderCount: 0, amount: 0,customerLocation: '',),
 
-
-
-
+        //ProductScreen
+        //PurchaseHistoryScreen
         Customers.id: (context) => Customers(),
+        ProductScreen.id: (context) => ProductScreen(),
+        PurchaseHistoryScreen.id: (context) => PurchaseHistoryScreen(),
+       // ContactUsScreen
+        ContactUsScreen.id: (context) => ContactUsScreen(),
 
 
 

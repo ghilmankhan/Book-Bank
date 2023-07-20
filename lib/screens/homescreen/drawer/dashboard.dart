@@ -1,6 +1,8 @@
 import 'package:book_bank/resources/app_resources.dart';
 import 'package:book_bank/screens/homescreen/cart.dart';
 import 'package:book_bank/screens/homescreen/drawer/Customers.dart';
+import 'package:book_bank/screens/homescreen/drawer/ProductScreen.dart';
+import 'package:book_bank/screens/homescreen/drawer/PurchaseHistoryScreen.dart';
 import 'package:book_bank/screens/homescreen/favouritelist.dart';
 import 'package:book_bank/screens/homescreen/homescreen2.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -8,6 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // Import the intl package for date and time formatting
 // import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+
+import 'package:book_bank/components/widgets/indicators.dart';
+import 'package:book_bank/extensions/color_extensions.dart';
+import 'package:book_bank/resources/app_resources.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
 
 class dashboard extends StatefulWidget {
   static const String id = 'dashboard';
@@ -107,42 +115,89 @@ class _dashboardState extends State<dashboard> {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Color(0xFF3C096C),
+                gradient: LinearGradient(
+                  colors: [Colors.purple, Colors.deepPurple],
+                ),
               ),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24.0,
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Text(
+                      'Note',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    Text(
+                      'Products, Customers, Purchase History and invoice contains all data of seller/buyer',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10.0,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text('Products'),
+              leading: Icon(
+                Icons.shopping_cart,
+                color: Colors.purple,
+              ),
+              title: Text(
+                'Products',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
               onTap: () {
+                Navigator.pushNamed(context, ProductScreen.id);
                 // Handle products tap
               },
             ),
             ListTile(
-              leading: Icon(Icons.bar_chart),
-              title: Text('Statistics'),
+              leading: Icon(
+                Icons.people_outline,
+                color: Colors.purple,
+              ),
+              title: Text(
+                'Customers',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
               onTap: () {
                 // Handle statistics tap
+                Navigator.pushNamed(context, Customers.id);
               },
             ),
             ListTile(
-              leading: Icon(Icons.history),
-              title: Text('Purchase History'),
+              leading: Icon(
+                Icons.history,
+                color: Colors.purple,
+              ),
+              title: Text(
+                'Purchase History',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.purpleAccent,
+                ),
+              ),
               onTap: () {
+                Navigator.pushNamed(context, PurchaseHistoryScreen.id);
+
                 // Handle purchase history tap
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.receipt),
-              title: Text('Invoice'),
-              onTap: () {
-                // Handle invoice tap
               },
             ),
           ],
@@ -238,7 +293,8 @@ class _dashboardState extends State<dashboard> {
                                     ),
                                     child: GestureDetector(
                                       onTap: () {
-                                        Navigator.pushNamed(context, 'Customers');
+                                        Navigator.pushNamed(
+                                            context, 'Customers');
                                       },
                                       child: Icon(
                                         Icons.people_outline_sharp,
@@ -247,7 +303,6 @@ class _dashboardState extends State<dashboard> {
                                       ),
                                     ),
                                   ),
-
                                 ],
                               ),
                               Container(
@@ -662,27 +717,91 @@ class _dashboardState extends State<dashboard> {
                   child: Column(
                     children: [
                       SizedBox(height: 16.0),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15.0),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.purple.withOpacity(0.4),
-                              spreadRadius: 2.0,
-                              blurRadius: 4.0,
-                              offset: Offset(0, 2),
-                            ),
-                          ],
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                            color: Color(0xFFf2e6ff),
+                            // Use the provided color code for the 'Dashboard' text
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.purple.withOpacity(0.4),
+                                spreadRadius: 2.0,
+                                blurRadius: 4.0,
+                                offset: Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'Summary',
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.deepPurple,
+                                  decoration: TextDecoration.underline,
+                                  fontFamily: 'Montserrat',
+                                ),
+                              ),
+                              SizedBox(height: 10.0),
+                              Text(
+                                'Sell = 40%',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.purple,
+                                ),
+                              ),
+                              Text(
+                                'Buy = 30%',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.purple,
+                                ),
+                              ),
+                              Text(
+                                'Donate = 15%',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.purple,
+                                ),
+                              ),
+                              Text(
+                                'Exchange = 15%',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.purple,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.purple.withOpacity(0.4),
+                                        spreadRadius: 2.0,
+                                        blurRadius: 4.0,
+                                        offset: Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  child: PieChartSample2(),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        width: 330.0,
-                        height: 200.0,
-
-
                       ),
 
-                      SizedBox(height: 16.0),
 
+                      SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
@@ -702,6 +821,8 @@ class _dashboardState extends State<dashboard> {
                                   color: Colors.white,
                                   size: 20.0,
                                 ),
+
+
                               ),
                             ),
                             SizedBox(height: 5.0),
@@ -889,20 +1010,85 @@ class _dashboardState extends State<dashboard> {
                           children: [
                             SizedBox(height: 30.0),
                             Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color:
-                                          Colors.purpleAccent.withOpacity(0.4),
-                                      spreadRadius: 2.0,
-                                      blurRadius: 4.0,
-                                      offset: Offset(0, 2),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15.0),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.purpleAccent.withOpacity(0.4),
+                                    spreadRadius: 2.0,
+                                    blurRadius: 4.0,
+                                    offset: Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(height: 10), // Adding space between Container border and CircleAvatars
+                                    Row(
+                                      children: [
+                                        CircleAvatar(
+                                          backgroundColor: Color(0xFF66FF33), // Green color
+                                          radius: 15, // Small size
+                                        ),
+                                        SizedBox(width: 20,),
+                                        Text(
+                                          'Orders',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.0,
+                                            color: Color(0xFF66FF33), // Green color
+                                          ),
+                                        ),
+                                      ],
                                     ),
+                                    SizedBox(height: 10), // Adding space between CircleAvatars
+                                    Row(
+                                      children: [
+                                        CircleAvatar(
+                                          backgroundColor: Color(0xFF66ffff), // Green color
+                                          radius: 15, // Small size
+                                        ),
+                                        SizedBox(width: 20,),
+                                        Text(
+                                          'Profit',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.0,
+                                            color: Color(0xFF66ffff), // Green color
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 10), // Adding space between CircleAvatars
+
+                                    Row(
+                                      children: [
+                                        CircleAvatar(
+                                          backgroundColor: Color(0xFFff33cc), // Green color
+                                          radius: 15, // Small size
+                                        ),
+                                        SizedBox(width: 20,),
+                                        Text(
+                                          'Refused',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.0,
+                                            color: Color(0xFFff33cc), // Green color
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 10), // Adding space at the bottom
+                                    LineChartSample1(),
                                   ],
                                 ),
-                                child: LineChartSample1()),
+                              ),
+                            ),
+
                           ],
                         ),
                       ),
@@ -948,9 +1134,19 @@ class _dashboardState extends State<dashboard> {
                             ),
                             child: Column(
                               children: [
+                                SizedBox(height: 30.0),
+                                Text(
+                                  'Views',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0,
+                                    color: Color(0xFF660066), // Green color
+                                  ),
+                                ),
                                 LineChartSample2(),
                               ],
-                            )),
+                            ),
+                        ),
                       ],
                     ),
                   ),
@@ -981,7 +1177,10 @@ class _dashboardState extends State<dashboard> {
                 Icons.chat,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                // cart
+                Navigator.pushNamed(context, cart.id);
+              },
             ),
             SizedBox(width: 32),
             IconButton(
@@ -1023,81 +1222,81 @@ class _LineChart extends StatelessWidget {
   }
 
   LineChartData get sampleData1 => LineChartData(
-    lineTouchData: lineTouchData1,
-    gridData: gridData,
-    titlesData: titlesData1,
-    borderData: borderData,
-    lineBarsData: lineBarsData1,
-    minX: 0,
-    maxX: 14,
-    maxY: 4,
-    minY: 0,
-  );
+        lineTouchData: lineTouchData1,
+        gridData: gridData,
+        titlesData: titlesData1,
+        borderData: borderData,
+        lineBarsData: lineBarsData1,
+        minX: 0,
+        maxX: 14,
+        maxY: 4,
+        minY: 0,
+      );
 
   LineChartData get sampleData2 => LineChartData(
-    lineTouchData: lineTouchData2,
-    gridData: gridData,
-    titlesData: titlesData2,
-    borderData: borderData,
-    lineBarsData: lineBarsData2,
-    minX: 0,
-    maxX: 14,
-    maxY: 6,
-    minY: 0,
-  );
+        lineTouchData: lineTouchData2,
+        gridData: gridData,
+        titlesData: titlesData2,
+        borderData: borderData,
+        lineBarsData: lineBarsData2,
+        minX: 0,
+        maxX: 14,
+        maxY: 6,
+        minY: 0,
+      );
 
   LineTouchData get lineTouchData1 => LineTouchData(
-    handleBuiltInTouches: true,
-    touchTooltipData: LineTouchTooltipData(
-      tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
-    ),
-  );
+        handleBuiltInTouches: true,
+        touchTooltipData: LineTouchTooltipData(
+          tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
+        ),
+      );
 
   FlTitlesData get titlesData1 => FlTitlesData(
-    bottomTitles: AxisTitles(
-      sideTitles: bottomTitles,
-    ),
-    rightTitles: AxisTitles(
-      sideTitles: SideTitles(showTitles: false),
-    ),
-    topTitles: AxisTitles(
-      sideTitles: SideTitles(showTitles: false),
-    ),
-    leftTitles: AxisTitles(
-      sideTitles: leftTitles(),
-    ),
-  );
+        bottomTitles: AxisTitles(
+          sideTitles: bottomTitles,
+        ),
+        rightTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        topTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        leftTitles: AxisTitles(
+          sideTitles: leftTitles(),
+        ),
+      );
 
   List<LineChartBarData> get lineBarsData1 => [
-    lineChartBarData1_1,
-    lineChartBarData1_2,
-    lineChartBarData1_3,
-  ];
+        lineChartBarData1_1,
+        lineChartBarData1_2,
+        lineChartBarData1_3,
+      ];
 
   LineTouchData get lineTouchData2 => LineTouchData(
-    enabled: false,
-  );
+        enabled: false,
+      );
 
   FlTitlesData get titlesData2 => FlTitlesData(
-    bottomTitles: AxisTitles(
-      sideTitles: bottomTitles,
-    ),
-    rightTitles: AxisTitles(
-      sideTitles: SideTitles(showTitles: false),
-    ),
-    topTitles: AxisTitles(
-      sideTitles: SideTitles(showTitles: false),
-    ),
-    leftTitles: AxisTitles(
-      sideTitles: leftTitles(),
-    ),
-  );
+        bottomTitles: AxisTitles(
+          sideTitles: bottomTitles,
+        ),
+        rightTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        topTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        leftTitles: AxisTitles(
+          sideTitles: leftTitles(),
+        ),
+      );
 
   List<LineChartBarData> get lineBarsData2 => [
-    lineChartBarData2_1,
-    lineChartBarData2_2,
-    lineChartBarData2_3,
-  ];
+        lineChartBarData2_1,
+        lineChartBarData2_2,
+        lineChartBarData2_3,
+      ];
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
@@ -1129,11 +1328,11 @@ class _LineChart extends StatelessWidget {
   }
 
   SideTitles leftTitles() => SideTitles(
-    getTitlesWidget: leftTitleWidgets,
-    showTitles: true,
-    interval: 1,
-    reservedSize: 40,
-  );
+        getTitlesWidget: leftTitleWidgets,
+        showTitles: true,
+        interval: 1,
+        reservedSize: 40,
+      );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
@@ -1165,136 +1364,137 @@ class _LineChart extends StatelessWidget {
   }
 
   SideTitles get bottomTitles => SideTitles(
-    showTitles: true,
-    reservedSize: 32,
-    interval: 1,
-    getTitlesWidget: bottomTitleWidgets,
-  );
+        showTitles: true,
+        reservedSize: 32,
+        interval: 1,
+        getTitlesWidget: bottomTitleWidgets,
+      );
 
   FlGridData get gridData => FlGridData(show: false);
 
   FlBorderData get borderData => FlBorderData(
-    show: true,
-    border: Border(
-      bottom:
-      BorderSide(color: AppColors.primary.withOpacity(0.2), width: 4),
-      left: const BorderSide(color: Colors.transparent),
-      right: const BorderSide(color: Colors.transparent),
-      top: const BorderSide(color: Colors.transparent),
-    ),
-  );
+        show: true,
+        border: Border(
+          bottom:
+              BorderSide(color: AppColors.primary.withOpacity(0.2), width: 4),
+          left: const BorderSide(color: Colors.transparent),
+          right: const BorderSide(color: Colors.transparent),
+          top: const BorderSide(color: Colors.transparent),
+        ),
+      );
 
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
-    isCurved: true,
-    color: AppColors.contentColorGreen,
-    barWidth: 8,
-    isStrokeCapRound: true,
-    dotData: FlDotData(show: false),
-    belowBarData: BarAreaData(show: false),
-    spots: const [
-      FlSpot(1, 1),
-      FlSpot(3, 1.5),
-      FlSpot(5, 1.4),
-      FlSpot(7, 3.4),
-      FlSpot(10, 2),
-      FlSpot(12, 2.2),
-      FlSpot(13, 1.8),
-    ],
-  );
+        isCurved: true,
+        color: AppColors.contentColorGreen,
+        barWidth: 8,
+        isStrokeCapRound: true,
+        dotData: FlDotData(show: false),
+        belowBarData: BarAreaData(show: false),
+        spots: const [
+          FlSpot(1, 1),
+          FlSpot(3, 1.5),
+          FlSpot(5, 1.4),
+          FlSpot(7, 3.4),
+          FlSpot(10, 2),
+          FlSpot(12, 2.2),
+          FlSpot(13, 1.8),
+        ],
+      );
 
   LineChartBarData get lineChartBarData1_2 => LineChartBarData(
-    isCurved: true,
-    color: AppColors.contentColorPink,
-    barWidth: 8,
-    isStrokeCapRound: true,
-    dotData: FlDotData(show: false),
-    belowBarData: BarAreaData(
-      show: false,
-      color: AppColors.contentColorPink.withOpacity(0),
-    ),
-    spots: const [
-      FlSpot(1, 1),
-      FlSpot(3, 2.8),
-      FlSpot(7, 1.2),
-      FlSpot(10, 2.8),
-      FlSpot(12, 2.6),
-      FlSpot(13, 3.9),
-    ],
-  );
+        isCurved: true,
+        color: AppColors.contentColorPink,
+        barWidth: 8,
+        isStrokeCapRound: true,
+        dotData: FlDotData(show: false),
+        belowBarData: BarAreaData(
+          show: false,
+          color: AppColors.contentColorPink.withOpacity(0),
+        ),
+        spots: const [
+          FlSpot(1, 1),
+          FlSpot(3, 2.8),
+          FlSpot(7, 1.2),
+          FlSpot(10, 2.8),
+          FlSpot(12, 2.6),
+          FlSpot(13, 3.9),
+        ],
+      );
 
   LineChartBarData get lineChartBarData1_3 => LineChartBarData(
-    isCurved: true,
-    color: AppColors.contentColorCyan,
-    barWidth: 8,
-    isStrokeCapRound: true,
-    dotData: FlDotData(show: false),
-    belowBarData: BarAreaData(show: false),
-    spots: const [
-      FlSpot(1, 2.8),
-      FlSpot(3, 1.9),
-      FlSpot(6, 3),
-      FlSpot(10, 1.3),
-      FlSpot(13, 2.5),
-    ],
-  );
+        isCurved: true,
+        color: AppColors.contentColorCyan,
+        barWidth: 8,
+        isStrokeCapRound: true,
+        dotData: FlDotData(show: false),
+        belowBarData: BarAreaData(show: false),
+        spots: const [
+          FlSpot(1, 2.8),
+          FlSpot(3, 1.9),
+          FlSpot(6, 3),
+          FlSpot(10, 1.3),
+          FlSpot(13, 2.5),
+        ],
+      );
 
   LineChartBarData get lineChartBarData2_1 => LineChartBarData(
-    isCurved: true,
-    curveSmoothness: 0,
-    color: AppColors.contentColorGreen.withOpacity(0.5),
-    barWidth: 4,
-    isStrokeCapRound: true,
-    dotData: FlDotData(show: false),
-    belowBarData: BarAreaData(show: false),
-    spots: const [
-      FlSpot(1, 1),
-      FlSpot(3, 4),
-      FlSpot(5, 1.8),
-      FlSpot(7, 5),
-      FlSpot(10, 2),
-      FlSpot(12, 2.2),
-      FlSpot(13, 1.8),
-    ],
-  );
+        isCurved: true,
+        curveSmoothness: 0,
+        color: AppColors.contentColorGreen.withOpacity(0.5),
+        barWidth: 4,
+        isStrokeCapRound: true,
+        dotData: FlDotData(show: false),
+        belowBarData: BarAreaData(show: false),
+        spots: const [
+          FlSpot(1, 1),
+          FlSpot(3, 4),
+          FlSpot(5, 1.8),
+          FlSpot(7, 5),
+          FlSpot(10, 2),
+          FlSpot(12, 2.2),
+          FlSpot(13, 1.8),
+        ],
+      );
 
   LineChartBarData get lineChartBarData2_2 => LineChartBarData(
-    isCurved: true,
-    color: AppColors.contentColorPink.withOpacity(0.5),
-    barWidth: 4,
-    isStrokeCapRound: true,
-    dotData: FlDotData(show: false),
-    belowBarData: BarAreaData(
-      show: true,
-      color: AppColors.contentColorPink.withOpacity(0.2),
-    ),
-    spots: const [
-      FlSpot(1, 1),
-      FlSpot(3, 2.8),
-      FlSpot(7, 1.2),
-      FlSpot(10, 2.8),
-      FlSpot(12, 2.6),
-      FlSpot(13, 3.9),
-    ],
-  );
+        isCurved: true,
+        color: AppColors.contentColorPink.withOpacity(0.5),
+        barWidth: 4,
+        isStrokeCapRound: true,
+        dotData: FlDotData(show: false),
+        belowBarData: BarAreaData(
+          show: true,
+          color: AppColors.contentColorPink.withOpacity(0.2),
+        ),
+        spots: const [
+          FlSpot(1, 1),
+          FlSpot(3, 2.8),
+          FlSpot(7, 1.2),
+          FlSpot(10, 2.8),
+          FlSpot(12, 2.6),
+          FlSpot(13, 3.9),
+        ],
+      );
 
   LineChartBarData get lineChartBarData2_3 => LineChartBarData(
-    isCurved: true,
-    curveSmoothness: 0,
-    color: AppColors.contentColorCyan.withOpacity(0.5),
-    barWidth: 2,
-    isStrokeCapRound: true,
-    dotData: FlDotData(show: true),
-    belowBarData: BarAreaData(show: false),
-    spots: const [
-      FlSpot(1, 3.8),
-      FlSpot(3, 1.9),
-      FlSpot(6, 5),
-      FlSpot(10, 3.3),
-      FlSpot(13, 4.5),
-    ],
-  );
+        isCurved: true,
+        curveSmoothness: 0,
+        color: AppColors.contentColorCyan.withOpacity(0.5),
+        barWidth: 2,
+        isStrokeCapRound: true,
+        dotData: FlDotData(show: true),
+        belowBarData: BarAreaData(show: false),
+        spots: const [
+          FlSpot(1, 3.8),
+          FlSpot(3, 1.9),
+          FlSpot(6, 5),
+          FlSpot(10, 3.3),
+          FlSpot(13, 4.5),
+        ],
+      );
 }
 
+// in use
 class LineChartSample1 extends StatefulWidget {
   const LineChartSample1({super.key});
 
@@ -1364,6 +1564,7 @@ class LineChartSample1State extends State<LineChartSample1> {
   }
 }
 
+// in use
 class LineChartSample2 extends StatefulWidget {
   const LineChartSample2({super.key});
 
@@ -1650,5 +1851,168 @@ class _LineChartSample2State extends State<LineChartSample2> {
         ),
       ],
     );
+  }
+}
+
+
+
+
+class PieChartSample2 extends StatefulWidget {
+  const PieChartSample2({super.key});
+
+  @override
+  State<StatefulWidget> createState() => PieChart2State();
+}
+
+class PieChart2State extends State {
+  int touchedIndex = -1;
+
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: 1.3,
+      child: Row(
+        children: <Widget>[
+          const SizedBox(
+            height: 18,
+          ),
+          Expanded(
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: PieChart(
+                PieChartData(
+                  pieTouchData: PieTouchData(
+                    touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                      setState(() {
+                        if (!event.isInterestedForInteractions ||
+                            pieTouchResponse == null ||
+                            pieTouchResponse.touchedSection == null) {
+                          touchedIndex = -1;
+                          return;
+                        }
+                        touchedIndex = pieTouchResponse
+                            .touchedSection!.touchedSectionIndex;
+                      });
+                    },
+                  ),
+                  borderData: FlBorderData(
+                    show: false,
+                  ),
+                  sectionsSpace: 0,
+                  centerSpaceRadius: 40,
+                  sections: showingSections(),
+                ),
+              ),
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              indicators(
+                color: AppColors.contentColorBlue,
+                text: 'SEL',
+                isSquare: true,
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              indicators(
+                color: AppColors.contentColorYellow,
+                text: 'BUY',
+                isSquare: true,
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              indicators(
+                color: AppColors.contentColorPurple,
+                text: 'DON',
+                isSquare: true,
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              indicators(
+                color: AppColors.contentColorGreen,
+                text: 'EXC',
+                isSquare: true,
+              ),
+              SizedBox(
+                height: 18,
+              ),
+            ],
+          ),
+          const SizedBox(
+            width: 28,
+          ),
+        ],
+      ),
+    );
+  }
+
+  List<PieChartSectionData> showingSections() {
+    return List.generate(4, (i) {
+      final isTouched = i == touchedIndex;
+      final fontSize = isTouched ? 25.0 : 16.0;
+      final radius = isTouched ? 60.0 : 50.0;
+      const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
+      switch (i) {
+        case 0:
+          return PieChartSectionData(
+            color: AppColors.contentColorBlue,
+            value: 40,
+            title: '40%',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: AppColors.mainTextColor1,
+              shadows: shadows,
+            ),
+          );
+        case 1:
+          return PieChartSectionData(
+            color: AppColors.contentColorYellow,
+            value: 30,
+            title: '30%',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: AppColors.mainTextColor1,
+              shadows: shadows,
+            ),
+          );
+        case 2:
+          return PieChartSectionData(
+            color: AppColors.contentColorPurple,
+            value: 15,
+            title: '15%',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: AppColors.mainTextColor1,
+              shadows: shadows,
+            ),
+          );
+        case 3:
+          return PieChartSectionData(
+            color: AppColors.contentColorGreen,
+            value: 15,
+            title: '15%',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: AppColors.mainTextColor1,
+              shadows: shadows,
+            ),
+          );
+        default:
+          throw Error();
+      }
+    });
   }
 }

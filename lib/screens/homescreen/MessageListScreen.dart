@@ -1,3 +1,5 @@
+import 'package:book_bank/screens/homescreen/drawer/Customers.dart';
+import 'package:book_bank/screens/homescreen/homescreen2.dart';
 import 'package:flutter/material.dart';
 
 
@@ -64,7 +66,7 @@ class MessageListScreen extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
-            label: 'Chat',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -77,9 +79,9 @@ class MessageListScreen extends StatelessWidget {
         ],
         onTap: (int index) {
           if (index == 0) {
-            Navigator.pushNamed(context, ChatScreen.id);
+            Navigator.pushNamed(context, homescreen2.id);
           } else if (index == 1) {
-            Navigator.pushNamed(context, PersonDetailsScreen.id);
+            Navigator.pushNamed(context, CustomerDetailsScreen.id);
           } else if (index == 2) {
             Navigator.pushNamed(context, SettingsScreen.id);
           }
@@ -235,19 +237,7 @@ class SearchScreen extends StatelessWidget {
   }
 }
 
-class PersonDetailsScreen extends StatelessWidget {
-  static const String id = 'PersonDetailsScreen';
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Person Details'),
-      ),
-      // Add your person details screen UI here
-    );
-  }
-}
 
 class SettingsScreen extends StatelessWidget {
   static const String id = 'SettingsScreen';
@@ -257,6 +247,8 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Settings'),
+        shadowColor: Colors.purpleAccent,
+        backgroundColor: Colors.purple,
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),
@@ -275,6 +267,14 @@ class SettingsScreen extends StatelessWidget {
                       Colors.purpleAccent,
                     ],
                   ),
+                  borderRadius: BorderRadius.circular(12.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.purpleAccent.withOpacity(0.4),
+                      blurRadius: 8.0,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -392,62 +392,8 @@ class SettingsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Center(
-              child: SizedBox(
-                width: 200.0, // Set a specific width for the buttons
-                child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 16.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.purpleAccent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    onPressed: () {
-                      // Logic to handle message requests button press
-                      Navigator.pushNamed(context, MessageRequestsScreen.id);
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.email),
-                        SizedBox(width: 8.0),
-                        Text('Message Requests'),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: SizedBox(
-                width: 200.0, // Set a specific width for the buttons
-                child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Spacer(),
-                      ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.purpleAccent,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        icon: Icon(Icons.archive),
-                        onPressed: () {
-                          // Logic to handle archived chats button press
-                          Navigator.pushNamed(context, ArchivedChatsScreen.id);
-                        },
-                        label: Text('View'),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+
+
           ],
         ),
       ),

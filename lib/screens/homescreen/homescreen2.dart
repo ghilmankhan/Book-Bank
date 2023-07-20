@@ -1,3 +1,4 @@
+import 'package:book_bank/screens/homescreen/MessageListScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:book_bank/screens/homescreen/cart.dart';
 import 'package:book_bank/screens/homescreen/ProductListing.dart';
@@ -5,9 +6,11 @@ import 'package:book_bank/screens/homescreen/DonationScreenSteps.dart';
 import 'package:book_bank/screens/homescreen/favouritelist.dart';
 import 'package:book_bank/screens/homescreen/drawer/drawerSettings.dart';
 import 'package:book_bank/screens/homescreen/drawer/dashboard.dart';
+import 'package:book_bank/screens/homescreen/Contactus.dart';
 
 import 'ProductPage2.dart';
 import 'WishlistScreen.dart';
+import 'drawer/ProductScreen.dart';
 
 
 //
@@ -221,7 +224,6 @@ class _homescreen2State extends State<homescreen2> {
                       ),
                       onPressed: () {
                         Navigator.pushNamed(context, ProductPage2.id);
-
                       },
                     ),
                   ),
@@ -491,7 +493,11 @@ class _homescreen2State extends State<homescreen2> {
                   color: Colors.purpleAccent,
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+
+                Navigator.pushNamed(context, ProductScreen.id);
+
+              },
             ),
             ListTile(
               leading: Icon(Icons.subscriptions, color: Colors.purple),
@@ -504,7 +510,7 @@ class _homescreen2State extends State<homescreen2> {
                 ),
               ),
               onTap: () {
-               // Navigator.pushNamed(context, WishlistScreen.id);
+                Navigator.pushNamed(context, WishlistScreen.id);
               },
             ),
             ListTile(
@@ -517,7 +523,11 @@ class _homescreen2State extends State<homescreen2> {
                   color: Colors.purpleAccent,
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                //ContactUsScreen
+                Navigator.pushNamed(context, ContactUsScreen.id);
+
+              },
             ),
           ],
         ),
@@ -921,7 +931,10 @@ class _homescreen2State extends State<homescreen2> {
                 Icons.chat,
                 color: Colors.purple,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, MessageListScreen.id);
+
+              },
             ),
             SizedBox(width: 32),
             IconButton(
